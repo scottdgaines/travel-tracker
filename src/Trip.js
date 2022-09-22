@@ -1,34 +1,14 @@
 class Trip {
-    constructor(tripID, travelerID, newTripData) {
+    constructor(tripID, travelerID, newTripData, destinationID) {
         this.id = tripID,
         this.userID = travelerID,
-        this.destinationID = newTripData.destinationName,
+        this.destinationID = destinationID,
         this.travelers = newTripData.travelers,
         this.date = newTripData.date,
         this.duration = newTripData.duration,
         this.status = 'pending',
         this.suggestedActivities = []
     };
-
-    findDestinationID(destinations, destinationName) {
-        const destinationID = destinations.find(destination => {
-            return destination.destination === destinationName
-        });
-        
-        if (destinationID === undefined) {
-            this.destinationID = null;
-            return 'Something went wrong, please try again later';
-        } else 
-            return this.destinationID = destinationID.id;
-        };
-
-    retrieveDestinationData(destinations) {
-        this.findDestinationID(destinations, this.destinationID)
-
-        return destinations.find(destination => {
-            return destination.id === this.destinationID
-        }) 
-    }
 
     calculateCosts(destinations) {
         const destinationData = this.retrieveDestinationData(destinations)
@@ -44,9 +24,13 @@ class Trip {
         const agentFee = totalTrip * .10
 
         return `$${totalTrip + agentFee}`
-
     }
-        
+
+    retrieveDestinationData(destinations) {
+        return destinations.find(destination => {
+            return destination.id === this.destinationID
+        }) 
+    }
 }
 
 export default Trip;
