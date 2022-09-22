@@ -41,10 +41,13 @@ class Traveler {
     };
 
     createNewTrip(trips, newTripData) {
-        const tripID = trips.length + 1
+        const tripID = this.generateTripID(trips)
 
-        const newTrip = new Trip(tripID, this.id, newTripData);
-        return newTrip;
+        return new Trip(tripID, this.id, newTripData);
+    };
+
+    generateTripID(trips) {
+        return trips.length + 1
     };
 };
 
