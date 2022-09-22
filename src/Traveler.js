@@ -1,3 +1,5 @@
+import Trip from '../src/Trip.js'
+
 class Traveler {
     constructor(travelerData) {
         this.id = travelerData.id,
@@ -5,10 +7,16 @@ class Traveler {
         this.travelerType = travelerData.travelerType
     }
 
-//should be able to see all the trips they've taken based on their id
-//pull from the database of ALL trips taken by all travelers
+    returnPreviousTrips(pastTripsData) {
+        return pastTripsData.filter(trip => {
+            return trip.userID === this.id
+        })
+    }
 
-//should be able to create a new trip
+    createNewTrip(newTripData) {
+        const newTrip = new Trip(this.id, newTripData)
+        return newTrip
+    }
 }
 
 export default Traveler;
