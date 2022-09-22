@@ -11,8 +11,6 @@ describe('Traveler', () => {
     let traveler1PendingTrips;
     let traveler1UpcomingTrips;
 
-    let destinations;
-
     beforeEach(() => {
         traveler1 = new Traveler({
             id: 5,
@@ -28,7 +26,7 @@ describe('Traveler', () => {
         };
 
         trip1 = {
-            id: 1,
+            id: 6,
             userID: 5,
             destinationID: 'Lima, Peru',
             travelers: 1,
@@ -116,7 +114,7 @@ describe('Traveler', () => {
             duration: 18,
             status: "pending",
             suggestedActivities: [ ]
-        }]
+        }];
 
         traveler1UpcomingTrips = [{
             id: 1,
@@ -136,7 +134,7 @@ describe('Traveler', () => {
             duration: 18,
             status: "approved",
             suggestedActivities: [ ]
-            }];
+        }];
     });
 
     it('Should be a function', () => {
@@ -172,6 +170,6 @@ describe('Traveler', () => {
     });
 
     it('Should be able to instantiate a new trip', () => {
-        expect(traveler1.createNewTrip(newTripInputValues)).to.deep.equal(trip1);
+        expect(traveler1.createNewTrip(trips, newTripInputValues)).to.deep.equal(trip1);
     });
 });
