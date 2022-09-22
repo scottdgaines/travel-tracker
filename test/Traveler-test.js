@@ -172,4 +172,8 @@ describe('Traveler', () => {
     it('Should be able to instantiate a new trip', () => {
         expect(traveler1.createNewTrip(trips, newTripInputValues)).to.deep.equal(trip1);
     });
+
+    it('Should be able to calculate the total amount a user has spent on all trips', () => {
+
+    })
 });
