@@ -40,8 +40,10 @@ class Traveler {
         });
     };
 
-    createNewTrip(newTripData) {
-        const newTrip = new Trip(this.id, newTripData);
+    createNewTrip(trips, newTripData) {
+        const tripID = trips.length + 1
+
+        const newTrip = new Trip(tripID, this.id, newTripData);
         return newTrip;
     };
 };
