@@ -30,7 +30,7 @@ describe('Trip', () => {
 
         tripID = trips.length + 1
 
-        newTrip = new Trip(tripID, 5, newTripInputValues);
+        newTrip = new Trip(tripID, 5, newTripInputValues, 10);
 
         trip1 = {
             id: 4,
@@ -77,8 +77,8 @@ describe('Trip', () => {
         expect(newTrip.userID).to.equal(5);
     });
 
-    it('Should have a default destination ID of a string', () => {
-        expect(newTrip.destinationID).to.equal('Lima, Peru');
+    it('Should have a destination ID', () => {
+        expect(newTrip.destinationID).to.equal(10);
     });
 
     it('Should have a number of travelers', () => {
@@ -101,14 +101,9 @@ describe('Trip', () => {
         expect(newTrip.suggestedActivities).to.deep.equal([]);
     });
 
-    it('Should be able to update the destination ID to a numeric value', () => {
-        newTrip.findDestinationID(destinations, newTrip.destinationID);
-        expect(newTrip.destinationID).to.equal(10);
-        
-        expect(newTrip.findDestinationID(destinations, 'Paris, France')).to.equal('Something went wrong, please try again later');
-        expect(newTrip.destinationID).to.equal(null);
-    });
+    it('Should be able to return total cost of the trip', () => {
+        expect(newTrip.calculateCosts(destinations)).to.equal('$1056');
+    })
 
-    
 })
 
