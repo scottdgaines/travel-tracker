@@ -4,12 +4,14 @@ import Trip from '../src/Trip.js'
 
 describe('Traveler', () => {
     let traveler1;
-    let newTripInputValues;
+    let newTripInputValues1;
+    let newTripInputValues2;
     let trip1;
     let trips;
     let traveler1PreviousTrips;
     let traveler1PendingTrips;
     let traveler1UpcomingTrips;
+    let destinations;
 
     beforeEach(() => {
         traveler1 = new Traveler({
@@ -18,8 +20,15 @@ describe('Traveler', () => {
             travelerType: 'Thrill-seeker'
         });
 
-        newTripInputValues = {
+        newTripInputValues1 = {
             destinationName: 'Lima, Peru',
+            travelers: 1,
+            date: '2022/09/16',
+            duration: 8
+        };
+
+        newTripInputValues2 = {
+            destinationName: 'Stockholm, Sweden',
             travelers: 1,
             date: '2022/09/16',
             duration: 8
@@ -28,7 +37,7 @@ describe('Traveler', () => {
         trip1 = {
             id: 6,
             userID: 5,
-            destinationID: 'Lima, Peru',
+            destinationID: 10,
             travelers: 1,
             date: '2022/09/16',
             duration: 8,
@@ -135,6 +144,31 @@ describe('Traveler', () => {
             status: "approved",
             suggestedActivities: [ ]
         }];
+
+        destinations = [{
+            id: 10,
+            destination: "Lima, Peru",
+            estimatedLodgingCostPerDay: 70,
+            estimatedFlightCostPerPerson: 400
+            },
+            {
+            id: 20,
+            destination: "Stockholm, Sweden",
+            estimatedLodgingCostPerDay: 100,
+            estimatedFlightCostPerPerson: 780
+        },
+        {
+            id: 49,
+            destination: "Sydney, Austrailia",
+            estimatedLodgingCostPerDay: 130,
+            estimatedFlightCostPerPerson: 950
+        },
+        {
+            id: 14,
+            destination: "Cartagena, Colombia",
+            estimatedLodgingCostPerDay: 65,
+            estimatedFlightCostPerPerson: 350
+        }]; 
     });
 
     it('Should be a function', () => {
@@ -170,10 +204,24 @@ describe('Traveler', () => {
     });
 
     it('Should be able to instantiate a new trip', () => {
-        expect(traveler1.createNewTrip(trips, newTripInputValues)).to.deep.equal(trip1);
+        expect(traveler1.createNewTrip(trips, destinations, newTripInputValues1)).to.deep.equal(trip1);
     });
 
-    it('Should be able to calculate the total amount a user has spent on all trips', () => {
+    it('Should update the destination city to the destination ID', () => {
+        let trip2 = traveler1.createNewTrip(trips, destinations, newTripInputValues1);
+        expect(trip2.destinationID).to.equal(10);
 
+        let trip3 = traveler1.createNewTrip(trips, destinations, newTripInputValues2);
+        expect(trip3.destinationID).to.equal(20)
+    })
+
+    it.skip('Should be able to calculate the total amount a user has spent on all trips', () => {
+        let trip2 = traveler1.createNewTrip(trips, traveler1PreviousTrips[0])
+        let trip3 = traveler1.createNewTrip(trips, traveler1PreviousTrips[1])
+
+        trip2.findDestinationID(destinations, trip2.destinationID)
+        trip2.calculateCosts(destinations)
+        traveler1.calculateTotalSpent(trips)
+        
     })
 });
