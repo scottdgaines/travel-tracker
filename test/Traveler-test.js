@@ -4,10 +4,13 @@ import Trip from '../src/Trip.js'
 
 describe('Traveler', () => {
     let traveler1;
+    let newTripInputValues;
     let trip1;
     let trips;
-    let traveler1Trips;
-    let newTripInputValues;
+    let traveler1PreviousTrips;
+    let traveler1PendingTrips;
+    let traveler1UpcomingTrips;
+
     let destinations;
 
     beforeEach(() => {
@@ -16,6 +19,13 @@ describe('Traveler', () => {
             name: 'John Doe',
             travelerType: 'Thrill-seeker'
         });
+
+        newTripInputValues = {
+            destinationName: 'Lima, Peru',
+            travelers: 1,
+            date: '2022/09/16',
+            duration: 8
+        };
 
         trip1 = {
             id: 1,
@@ -31,20 +41,19 @@ describe('Traveler', () => {
         trips = [{
             id: 1,
             userID: 5,
+            destinationID: 25,
+            travelers: 5,
+            date: "2023/10/04",
+            duration: 18,
+            status: "pending",
+            suggestedActivities: [ ]
+        },
+        {   id: 2,
+            userID: 5,
             destinationID: 49,
             travelers: 1,
             date: "2022/09/16",
             duration: 8,
-            status: "approved",
-            suggestedActivities: [ ]
-        },
-        {   
-            id: 2,
-            userID: 5,
-            destinationID: 25,
-            travelers: 5,
-            date: "2022/10/04",
-            duration: 18,
             status: "approved",
             suggestedActivities: [ ]
         },
@@ -66,25 +75,25 @@ describe('Traveler', () => {
             duration: 10,
             status: "approved",
             suggestedActivities: [ ]
-        }];
+        },
+        {
+            id: 5,
+            userID: 5,
+            destinationID: 29,
+            travelers: 3,
+            date: "2023/04/30",
+            duration: 18,
+            status: "approved",
+            suggestedActivities: [ ]
+            }];
 
-        traveler1Trips = [{
-            id: 1,
+        traveler1PreviousTrips = [{   
+            id: 2,
             userID: 5,
             destinationID: 49,
             travelers: 1,
             date: "2022/09/16",
             duration: 8,
-            status: "approved",
-            suggestedActivities: [ ]
-        },
-        {   
-            id: 2,
-            userID: 5,
-            destinationID: 25,
-            travelers: 5,
-            date: "2022/10/04",
-            duration: 18,
             status: "approved",
             suggestedActivities: [ ]
         },
@@ -98,12 +107,36 @@ describe('Traveler', () => {
             suggestedActivities: [ ]
         }];
 
-        newTripInputValues = {
-            destinationName: 'Lima, Peru',
-            travelers: 1,
-            date: '2022/09/16',
-            duration: 8
-        };
+        traveler1PendingTrips = [{
+            id: 1,
+            userID: 5,
+            destinationID: 25,
+            travelers: 5,
+            date: "2023/10/04",
+            duration: 18,
+            status: "pending",
+            suggestedActivities: [ ]
+        }]
+
+        traveler1UpcomingTrips = [{
+            id: 1,
+            userID: 5,
+            destinationID: 25,
+            travelers: 5,
+            date: "2023/10/04",
+            duration: 18,
+            status: "pending",
+            suggestedActivities: [ ]
+        },
+        {   id: 5,
+            userID: 5,
+            destinationID: 29,
+            travelers: 3,
+            date: "2023/04/30",
+            duration: 18,
+            status: "approved",
+            suggestedActivities: [ ]
+            }];
     });
 
     it('Should be a function', () => {
@@ -127,10 +160,18 @@ describe('Traveler', () => {
     });
 
     it('Should return a list of their previous trips', () => {
-        expect(traveler1.returnPreviousTrips(trips)).to.deep.equal(traveler1Trips)
+        expect(traveler1.returnPreviousTrips(trips)).to.deep.equal(traveler1PreviousTrips);
+    });
+
+    it('Should return a list of all pending trips', () => {
+        expect(traveler1.returnPendingTrips(trips)).to.deep.equal(traveler1PendingTrips);
+    });
+
+    it('Should return a list of all upcoming trips', () => {
+        expect(traveler1.returnUpcomingTrips(trips)).to.deep.equal(traveler1UpcomingTrips);
     });
 
     it('Should be able to instantiate a new trip', () => {
-        expect(traveler1.createNewTrip(newTripInputValues)).to.deep.equal(trip1)
+        expect(traveler1.createNewTrip(newTripInputValues)).to.deep.equal(trip1);
     });
-})
+});
