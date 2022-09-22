@@ -1,11 +1,13 @@
 import { expect } from 'chai';
 import Traveler from '../src/Traveler.js';
 import Trip from '../src/Trip.js';
-import Destination from '../src/Destination.js';
+
 
 describe('Trip', () => {
     let traveler1;
     let newTripInputValues;
+    let trips;
+    let tripID;
     let newTrip;
     let trip1;
     let destinations;
@@ -24,10 +26,14 @@ describe('Trip', () => {
             duration: 8
         };
 
-        newTrip = new Trip(1, newTripInputValues);
+        trips = ['sampleTrip1', 'sampleTrip2', 'sampleTrip3']
+
+        tripID = trips.length + 1
+
+        newTrip = new Trip(tripID, 5, newTripInputValues);
 
         trip1 = {
-            id: 1,
+            id: 4,
             userID: 5,
             destinationID: 10,
             travelers: 1,
@@ -52,8 +58,7 @@ describe('Trip', () => {
             estimatedFlightCostPerPerson: 780,
             image: "https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
             alt: "city with boats on the water during the day time"
-            }
-        ];
+        }];
     });
 
     it('Should be a function', () => {
@@ -65,11 +70,11 @@ describe('Trip', () => {
     });
 
     it('Should have a trip ID', () => {
-        expect(newTrip.id).to.equal(1);
+        expect(newTrip.id).to.equal(4);
     });
 
     it('Should have a user ID', () => {
-        expect(newTrip.userID).to.equal(1);
+        expect(newTrip.userID).to.equal(5);
     });
 
     it('Should have a default destination ID of a string', () => {
@@ -103,5 +108,7 @@ describe('Trip', () => {
         expect(newTrip.findDestinationID(destinations, 'Paris, France')).to.equal('Something went wrong, please try again later');
         expect(newTrip.destinationID).to.equal(null);
     });
+
+    
 })
 
