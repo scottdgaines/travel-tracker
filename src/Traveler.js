@@ -5,18 +5,45 @@ class Traveler {
         this.id = travelerData.id,
         this.name = travelerData.name,
         this.travelerType = travelerData.travelerType
-    }
+    };
 
-    returnPreviousTrips(pastTripsData) {
-        return pastTripsData.filter(trip => {
-            return trip.userID === this.id
-        })
-    }
+    returnCurrentDate() {
+        let today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0');       
+        const yyyy = today.getFullYear();
+
+        today = yyyy + '/' + dd + '/' + mm;
+
+        return today;
+    };
+
+    returnPreviousTrips(tripsData) {
+        let currentDate = this.returnCurrentDate();
+ 
+        return tripsData.filter(trip => {
+            return trip.userID === this.id && trip.date <= currentDate;
+        });
+    };
+
+    returnPendingTrips(tripsData) {
+        return tripsData.filter(trip => {
+            return trip.userID === this.id && trip.status === 'pending';
+        });
+    };
+
+    returnUpcomingTrips(tripsData) {
+        let currentDate = this.returnCurrentDate();
+
+        return tripsData.filter(trip => {
+            return trip.userID === this.id && trip.date >= currentDate;
+        });
+    };
 
     createNewTrip(newTripData) {
-        const newTrip = new Trip(this.id, newTripData)
-        return newTrip
-    }
-}
+        const newTrip = new Trip(this.id, newTripData);
+        return newTrip;
+    };
+};
 
 export default Traveler;
