@@ -1,53 +1,107 @@
 import { expect } from 'chai';
-import Traveler from '../src/Traveler.js'
-import Trip from '../src/Trip.js'
-import Destination from '../src/Destination.js'
+import Traveler from '../src/Traveler.js';
+import Trip from '../src/Trip.js';
+import Destination from '../src/Destination.js';
 
 describe('Trip', () => {
     let traveler1;
-    let trip1;
     let newTripInputValues;
+    let newTrip;
+    let trip1;
+    let destinations;
 
     beforeEach(() => {
         traveler1 = new Traveler({
-            id: 1,
+            id: 5,
             name: 'John Doe',
             travelerType: 'Thrill-seeker'
         });
 
-        trip1 = new Trip({
+        newTripInputValues = {
+            destinationName: 'Lima, Peru',
+            travelers: 1,
+            date: '2022/09/16',
+            duration: 8
+        };
+
+        newTrip = new Trip(1, newTripInputValues);
+
+        trip1 = {
             id: 1,
-            userID: 1,
-            destinationID: 1,
+            userID: 5,
+            destinationID: 10,
             travelers: 1,
             date: '2022/09/16',
             duration: 8,
             status: 'pending',
             suggestedActivities: [ ]
-        })
-
-        newTripInputValues = {
-            destinationID: 1,
-            travelers: 1,
-            date: '2022/09/16',
-            duration: 8
         };
-    })
 
-    it.skip('Should be a function', () => {
+        destinations = [{
+            id: 10,
+            destination: "Lima, Peru",
+            estimatedLodgingCostPerDay: 70,
+            estimatedFlightCostPerPerson: 400,
+            image: "https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
+            alt: "overview of city buildings with a clear sky"
+            },
+            {
+            id: 20,
+            destination: "Stockholm, Sweden",
+            estimatedLodgingCostPerDay: 100,
+            estimatedFlightCostPerPerson: 780,
+            image: "https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+            alt: "city with boats on the water during the day time"
+            }
+        ];
+    });
+
+    it('Should be a function', () => {
         expect(Traveler).to.be.a('function');
     });
 
-    it.skip('Should be an instance of Trip', () => {
-        expect(trip1).to.be.an.instanceOf(Trip);
+    it('Should be an instance of Trip', () => {
+        expect(newTrip).to.be.an.instanceOf(Trip);
     });
 
-    
+    it('Should have a trip ID', () => {
+        expect(newTrip.id).to.equal(1);
+    });
 
-    it.skip('Should have a user ID', () => {
-        traveler1.createNewTrip(newTripInputValues)
+    it('Should have a user ID', () => {
+        expect(newTrip.userID).to.equal(1);
+    });
 
-        expect(trip1.userID).to.equal(1);
-    })
+    it('Should have a default destination ID of a string', () => {
+        expect(newTrip.destinationID).to.equal('Lima, Peru');
+    });
+
+    it('Should have a number of travelers', () => {
+        expect(newTrip.travelers).to.equal(1);
+    });
+
+    it('Should have an arrival date', () => {
+        expect(newTrip.date).to.equal('2022/09/16');
+    });
+
+    it('Should list the duration of the trip', () => {
+        expect(newTrip.duration).to.equal(8);
+    });
+
+    it('Should have a default status of "pending"', () => {
+        expect(newTrip.status).to.equal('pending');
+    });
+
+    it('Should have a default of an empty array for suggested activities', () => {
+        expect(newTrip.suggestedActivities).to.deep.equal([]);
+    });
+
+    it('Should be able to update the destination ID to a numeric value', () => {
+        newTrip.findDestinationID(destinations, newTrip.destinationID);
+        expect(newTrip.destinationID).to.equal(10);
+        
+        expect(newTrip.findDestinationID(destinations, 'Paris, France')).to.equal('Something went wrong, please try again later');
+        expect(newTrip.destinationID).to.equal(null);
+    });
 })
 
