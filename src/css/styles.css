@@ -16,19 +16,20 @@
   flex-direction: row;
   justify-content: space-around;
   border: 2px solid red;
-  height: 70%;
+  height: 85%;
   overflow-x: scroll;
 }
 
 .trip-card {
-  border: 1px solid purple;
+  border: 1px solid grey;
+  box-shadow: 2px 2px 2px grey;
   height: 200px;
   width: 200px;
   margin-top: 15px;
+  border-radius: 10px;
 }
 
 .trip-card-image-container {
-  border: 2px solid black;
   width: fill;
   height: 50%;
 }
@@ -70,23 +71,6 @@
 
 .text {
   font-family: 'Noto Serif', serif;
-}
-
-.nav-icon {
-  background-image: url('../images/button-image.jpg');
-  cursor: pointer;
-  height: 65px;
-  width: 70px;
-  border: 2px solid red;
-}
-
-.nav-text {
-  cursor: pointer;
-  background-color: white;
-  font-size: 20px;
-  margin-top: 10px;
-  height: fit-content;
-  border: 2px solid red;
 }
 
 .wiggle {
