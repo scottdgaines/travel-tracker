@@ -128,12 +128,16 @@ body {
 .new-trip-form-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
+
+
 
 form {
   width: 50%;
-  margin-left: 20px;
+  margin-left: 5px;
+  width: fit-content;
+
 }
 
 button {
@@ -141,8 +145,14 @@ button {
   background-color: lightblue;
 }
 
+.form-image {
+  height: 90px;
+  margin-top: 20px;
+}
+
 .new-trip-cost {
   font-size: 15px;
+
 }
 
 
