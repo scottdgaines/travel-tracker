@@ -9,7 +9,6 @@ class Traveler {
 
     returnPreviousTrips(tripsData) {
         let currentDate = this.returnCurrentDate();
-        console.log(currentDate)
  
         return tripsData.filter(trip => {
             return trip.userID === this.id && trip.date < currentDate;
