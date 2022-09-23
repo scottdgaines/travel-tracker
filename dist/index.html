@@ -14,54 +14,21 @@
   </head>
   <body>
     <div class="welcome-message-container">
-      <h1 class="username-header header wiggle">Welcome <span class="wiggle" id="userName">USERNAME</span></h1>
-      <h3 class="pending-trip-message text" id="pendingTrips">You have <span id="pendingTripCount">0</span> pending <span id="pluralTrip">trips</span></h3>
+      <h1 class="username-header header wiggle">Welcome, <span class="wiggle" id="userName"></span>!</h1>
+      <h3 class="pending-trip-message text" id="pendingTrips">You have <span id="pendingTripCount"></span> pending <span id="pluralTrip">trips</span></h3>
     </div>
     <div class="display-area">
       <section class="display upcoming-trips" id="upcomingTrips">
         <h2 class="display-header header" id="displayAreaHeader">Upcoming Trips</h2>
-        <div class="trip-card-display-container">
-          <div class="trip-card text" id="tripCard">
-            <div class="trip-card-image-container">
-              <img class="card-image" src="" alt="" />
-            </div>
-            <div class="trip-card-info-container">
-              <h2 class="trip-card-header" id="cardDestination">Destination</h2>
-              <h3 class="trip-card-dates" id="cardDates">dates</h3>
-              <h3 class="trip-card-status" id="cardTripStatus">Status</h3>
-            </div>
-          </div>
-        </div>
+        <div class="trip-card-display-container" id="upcomingTripCardContainer"></div>
       </section>
       <section class="display previous-trips" id="previousTrips">
         <h2 class="display-header header" id="displayAreaHeader">Previous Trips</h2>
-        <div class="trip-card-display-container">
-          <div class="trip-card text" id="tripCard">
-            <div class="trip-card-image-container">
-              <img class="card-image" src="" alt="" />
-            </div>
-            <div class="trip-card-info-container">
-              <h2 class="trip-card-header" id="cardDestination">Destination</h2>
-              <h3 class="trip-card-dates" id="cardDates">dates</h3>
-              <h3 class="trip-card-status" id="cardTripStatus">Approved</h3>
-            </div>
-          </div>
-        </div>
+        <div class="trip-card-display-container" id="previousTripCardContainer"></div>
       </section>
       <section class="display pending-trips" id="pendingTrips">
         <h2 class="display-header header" id="displayAreaHeader">Pending Trips</h2>
-        <div class="trip-card-display-container">
-          <div class="trip-card text" id="tripCard">
-            <div class="trip-card-image-container">
-              <img class="card-image" src="" alt="" />
-            </div>
-            <div class="trip-card-info-container">
-              <h2 class="trip-card-header" id="cardDestination">Destination</h2>
-              <h3 class="trip-card-dates" id="cardDates">dates</h3>
-              <h3 class="trip-card-status" id="cardTripStatus">Approved</h3>
-            </div>
-          </div>
-        </div>
+        <div class="trip-card-display-container" id="pendingTripCardContainer"></div>
       </section>
       <section class="display budget" id="budgetCard">
         <h2 class="display-header budget-header header" id="displayAreaHeader">Here's what you've spent this year:</h2>

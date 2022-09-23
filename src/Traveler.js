@@ -11,7 +11,7 @@ class Traveler {
         let currentDate = this.returnCurrentDate();
  
         return tripsData.filter(trip => {
-            return trip.userID === this.id && trip.date <= currentDate;
+            return trip.userID === this.id && trip.date < currentDate;
         });
     };
 
@@ -64,7 +64,7 @@ class Traveler {
         const mm = String(today.getMonth() + 1).padStart(2, '0');       
         const yyyy = today.getFullYear();
 
-        today = yyyy + '/' + dd + '/' + mm;
+        today = yyyy + '/' + mm + '/' + dd;
 
         return today;
     };

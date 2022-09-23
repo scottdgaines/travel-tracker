@@ -5,17 +5,18 @@
 }
 
 .display-header {
-  border: 2px solid purple;
   text-align: center;
   margin: 0 auto;
   font-size: 30px;
 }
 
+.card-image {
+  height: 100px;
+  width: 200px;
+  border-radius: 10px;
+}
+
 .trip-card-display-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border: 2px solid red;
   height: 85%;
   overflow-x: scroll;
 }
@@ -25,37 +26,37 @@
   box-shadow: 2px 2px 2px grey;
   height: 200px;
   width: 200px;
-  margin-top: 15px;
+  margin: 0 auto;
+  margin-top: 20px;
   border-radius: 10px;
+  overflow-x: scroll;
 }
 
 .trip-card-image-container {
   width: fill;
-  height: 50%;
+  height: 100px;
 }
 
 .trip-card-info-container {
-  border: 2px solid blue;
-  height: 50%;
+  height: 100px;
   width: fill
 }
 
 .trip-card-header {
-  border: 2px solid orange;
   width: fit-content;
   font-size: 20px;
   margin: 0 auto;
 }
 
 .trip-card-dates {
-  border: 2px solid yellow;
   width: fit-content;
   margin: 0 auto;
 }
 
 .trip-card-status {
-  border: 2px solid green;
   width: fit-content;
+  font-size: 15px;
+  margin-left: 5px;
 }
   
 .display {
@@ -87,7 +88,6 @@ body {
 }
 
 .welcome-message-container {
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
   width: 50vw;
@@ -96,20 +96,17 @@ body {
 }
 
 .username-header {
-  border: 2px solid orange;
   width: fit-content;
   margin: 0 auto;
 }
 
 .pending-trip-message {
-  border: 2px solid yellow;
   width: fit-content;
   height: fit-content;
   margin: 0 auto;
 }
 
 .display-area {
-  border: 2px solid red;
   display: flex;
   flex-direction: row;
 }
@@ -120,7 +117,6 @@ body {
 }
 
 .create-new-trip-display {
-  border: 2px solid green;
   background-color: white;
   border-radius: 25px;
   box-shadow: 5px 5px 5px grey;
@@ -136,22 +132,17 @@ body {
 }
 
 form {
-  border: 4px solid blue;
   width: 50%;
+  margin-left: 20px;
 }
 
 button {
+  margin-top: 5px;
   background-color: lightblue;
 }
 
 .new-trip-cost {
-  border: 2px solid red;
-}
-
-/* Properties Added via Javascript, Arranged Alphabetically */
-
-.hidden {
-  display: none;
+  font-size: 15px;
 }
 
 
