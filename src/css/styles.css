@@ -29,6 +29,7 @@
   margin: 0 auto;
   margin-top: 20px;
   border-radius: 10px;
+  overflow-x: scroll;
 }
 
 .trip-card-image-container {
