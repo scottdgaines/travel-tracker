@@ -88,7 +88,6 @@ body {
 }
 
 .welcome-message-container {
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
   width: 50vw;
@@ -97,20 +96,17 @@ body {
 }
 
 .username-header {
-  border: 2px solid orange;
   width: fit-content;
   margin: 0 auto;
 }
 
 .pending-trip-message {
-  border: 2px solid yellow;
   width: fit-content;
   height: fit-content;
   margin: 0 auto;
 }
 
 .display-area {
-  border: 2px solid red;
   display: flex;
   flex-direction: row;
 }
@@ -121,7 +117,6 @@ body {
 }
 
 .create-new-trip-display {
-  border: 2px solid green;
   background-color: white;
   border-radius: 25px;
   box-shadow: 5px 5px 5px grey;
@@ -137,22 +132,17 @@ body {
 }
 
 form {
-  border: 4px solid blue;
   width: 50%;
+  margin-left: 20px;
 }
 
 button {
+  margin-top: 5px;
   background-color: lightblue;
 }
 
 .new-trip-cost {
-  border: 2px solid red;
-}
-
-/* Properties Added via Javascript, Arranged Alphabetically */
-
-.hidden {
-  display: none;
+  font-size: 15px;
 }
 
 
