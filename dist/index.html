@@ -13,58 +13,85 @@
     <title>Travel Tracker</title>
   </head>
   <body>
-    <div class="welcome-message">
-      <h1 class="username-header header wiggle">Welcome <span class="username" id="userName">USERNAME</span></h1>
-      <h3 class="pending-trip-header text" id="pendingTrips">You have <span id="pendingTripCount">0</span> pending <span id="pluralTrip">trips</span></h3>
+    <div class="welcome-message-container">
+      <h1 class="username-header header wiggle">Welcome <span class="wiggle" id="userName">USERNAME</span></h1>
+      <h3 class="pending-trip-message text" id="pendingTrips">You have <span id="pendingTripCount">0</span> pending <span id="pluralTrip">trips</span></h3>
     </div>
-    <nav class="navigation-bar">
-      <img class="nav-icon" src="./images/button-image.jpg" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
-      <a class="nav-text text" id="viewUpcomingTrips">View Upcoming Trips</a>
-      <br><img class="nav-icon" src="./images/button-image.jpg" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
-      <a class="nav-text text" id="viewPendingTrips">View Pending Trips</a>
-      <br><img class="nav-icon" src="./images/button-image.jpg" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
-      <a class="nav-text text" id="viewPastTrips">View Past Trips</a>
-      <br><img class="nav-icon" src="./images/button-image.jpg" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
-      <a class="nav-text text" id="starNewTrip">Start a New Trip</a>
-      <br><img class="nav-icon" src="./images/button-image.jpg" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
-      <a class="nav-text text" id="viewBudget">View Your Budget</a>
-    </nav>
-    <section class="display-area hidden" id="displayArea">
-      <h2 class="display-header header" id="displayAreaHeader">Upcoming Trips</h2>
-      <div class="trip-card-display-container">
-        <div class="trip-card text" id="tripCard">
-          <div class="trip-card-image-container">
-            <img class="card-image" src="" alt="" />
-          </div>
-          <div class="trip-card-info-container">
-            <h2 class="trip-card-header" id="cardDestination">Upcoming Trip Destination</h2>
-            <h3 class="trip-card-dates" id="cardDates">Upcoming Trip dates</h3>
-            <h3 class="trip-card-status" id="cardTripStatus">Approved</h3>
+    <div class="display-area">
+      <section class="display upcoming-trips" id="upcomingTrips">
+        <h2 class="display-header header" id="displayAreaHeader">Upcoming Trips</h2>
+        <div class="trip-card-display-container">
+          <div class="trip-card text" id="tripCard">
+            <div class="trip-card-image-container">
+              <img class="card-image" src="" alt="" />
+            </div>
+            <div class="trip-card-info-container">
+              <h2 class="trip-card-header" id="cardDestination">Destination</h2>
+              <h3 class="trip-card-dates" id="cardDates">dates</h3>
+              <h3 class="trip-card-status" id="cardTripStatus">Status</h3>
+            </div>
           </div>
         </div>
-      </div>
-      <form class="new-trip-form text hidden" id="newTripForm">
-        <br><label for="destination">Where would you like to go?</label>
-        <select name="destination" id="formDestination">
-          <option>Lima</option>
-          <option>Paris</option>
-         </select> 
-        <br><label for="number-of-travelers">How many people will be going?</label>
-        <input name="number-of-travelers" type="text" />
-        <br><label for="date">When would you like to arrive?</label>
-        <input name="date" id="formDate" type="date" />
-        <br><label for="duration">How long would you like to stay?</label>
-        <input name="duration" id="formDuration" type="text" />
-        </select>
-        <br><button class="text" type="submit">Create Your Trip!</button>
-      </form>
-      <div class="budget-display header hidden" id="budgetDisplay">
-        <h3 class="text">Your trips this year totaled: <span id="budgetTripsTotal">0</span></h3>
-        <h3 class="text">Your agent fees this year totaled: <span id="budgetAgentFees">0</span></h3>
-        <h3 class="text">The total you've spent this year is: <span id="budgetTotal">0</span></h3>
-      </div>
-      <img class="nav-icon back-to-main" src="./images/button-image.jpg" alt="A whimsical hot air balloon carrying off it's occupant to a new destination" />
-      <a class="nav-text text" id="returnToMain">Back to Main</a>
+      </section>
+      <section class="display previous-trips" id="previousTrips">
+        <h2 class="display-header header" id="displayAreaHeader">Previous Trips</h2>
+        <div class="trip-card-display-container">
+          <div class="trip-card text" id="tripCard">
+            <div class="trip-card-image-container">
+              <img class="card-image" src="" alt="" />
+            </div>
+            <div class="trip-card-info-container">
+              <h2 class="trip-card-header" id="cardDestination">Destination</h2>
+              <h3 class="trip-card-dates" id="cardDates">dates</h3>
+              <h3 class="trip-card-status" id="cardTripStatus">Approved</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="display pending-trips" id="pendingTrips">
+        <h2 class="display-header header" id="displayAreaHeader">Pending Trips</h2>
+        <div class="trip-card-display-container">
+          <div class="trip-card text" id="tripCard">
+            <div class="trip-card-image-container">
+              <img class="card-image" src="" alt="" />
+            </div>
+            <div class="trip-card-info-container">
+              <h2 class="trip-card-header" id="cardDestination">Destination</h2>
+              <h3 class="trip-card-dates" id="cardDates">dates</h3>
+              <h3 class="trip-card-status" id="cardTripStatus">Approved</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="display budget" id="budgetCard">
+        <h2 class="display-header budget-header header" id="displayAreaHeader">Here's what you've spent this year:</h2>
+        <div class="trip-card-display-container">
+          <div class="budget-card text"></div>
+        </div>
+      </section>
+    </div>
+    <section class="create-new-trip-display">
+      <h2 class="display-header header">Start a new trip!</h2>
+      <section class="new-trip-form-container">
+        <form class="new-trip-form text" id="newTripForm">
+          <br><label for="destination">Where would you like to go?</label>
+          <select name="destination" id="formDestination">
+            <option>Lima</option>
+            <option>Paris</option>
+          </select> 
+          <br><label for="number-of-travelers">How many people will be going?</label>
+          <input name="number-of-travelers" type="text" />
+          <br><label for="date">When would you like to arrive?</label>
+          <input name="date" id="formDate" type="date" />
+          <br><label for="duration">How long would you like to stay?</label>
+          <input name="duration" id="formDuration" type="text" />
+          </select>
+          <br><button class="text" type="submit">Create Your Trip!</button>
+        </form>
+        <div class="new-trip-cost" id="newTripCost">
+          <h2 class="header">Here's what it will cost:</h2>
+        </div>
+      </section>
     </section>
     <script src="bundle.js"></script>
   </body>
