@@ -14,6 +14,7 @@ const userName = document.getElementById('userName');
 const pendingTripCount = document.getElementById('pendingTripCount');
 const pluralTrip = document.getElementById('pluralTrip');
 const upcomingTripCardContainer = document.getElementById('upcomingTripCardContainer');
+const previousTripCardContainer = document.getElementById('previousTripCardContainer');
 
 //GLOBAL VARIABLES
 let allUsers;
@@ -47,6 +48,7 @@ function populatePage() {
     renderWelcomeMessage();
     renderPendingTripCount();
     renderUpcomingTrips();
+    renderPreviousTrips();
 }
 
 function instantiateNewUser() {
@@ -91,6 +93,33 @@ function renderUpcomingTrips() {
             </div> `
         })
     }
+}
+
+function renderPreviousTrips() {
+    const previousTrips = currentUser.returnPreviousTrips(allTrips)
+    console.log('previous', previousTrips)
+    
+    if (previousTrips.length >= 1) {
+        const destinationDataSets = retrieveDestinationData(previousTrips);
+        let index = -1;
+        console.log('destData', destinationDataSets)
+       
+        destinationDataSets.forEach(destination => { 
+            index++;
+   
+            previousTripCardContainer.innerHTML += `
+            <div class="trip-card text" id="upcomingTripCard">
+                <div class="trip-card-image-container">
+                    <img class="card-image" src="${destination.image}" alt="${destination.alt}" />
+                </div>
+                <div class="trip-card-info-container">
+                    <h2 class="trip-card-header" id="cardDestination">${destination.destination}</h2>
+                    <h3 class="trip-card-dates" id="cardDates">${previousTrips[index].date}</h3>
+                    <h3 class="trip-card-status" id="cardTripStatus">${previousTrips[index].status}</h3>
+                </div>
+            </div> `
+        });
+    };
 }
 
 function retrieveDestinationData(trips) {
