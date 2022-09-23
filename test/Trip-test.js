@@ -102,7 +102,7 @@ describe('Trip', () => {
     });
 
     it('Should be able to return total cost of the trip', () => {
-        expect(newTrip.calculateCosts(destinations)).to.equal('$1056');
+        expect(newTrip.calculateCosts(destinations)).to.equal(1056);
     })
 
 })
