@@ -6,8 +6,7 @@
 
 #### Any background context you want to provide?
 
-#### What are the relevant tickets?
+#### Any issues?
 
-#### Screenshots (if appropriate)
+#### Next Steps
 
-#### Questions:
