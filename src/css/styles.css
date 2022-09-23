@@ -5,17 +5,18 @@
 }
 
 .display-header {
-  border: 2px solid purple;
   text-align: center;
   margin: 0 auto;
   font-size: 30px;
 }
 
+.card-image {
+  height: 100px;
+  width: 200px;
+  border-radius: 10px;
+}
+
 .trip-card-display-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border: 2px solid red;
   height: 85%;
   overflow-x: scroll;
 }
@@ -25,37 +26,36 @@
   box-shadow: 2px 2px 2px grey;
   height: 200px;
   width: 200px;
-  margin-top: 15px;
+  margin: 0 auto;
+  margin-top: 20px;
   border-radius: 10px;
 }
 
 .trip-card-image-container {
   width: fill;
-  height: 50%;
+  height: 100px;
 }
 
 .trip-card-info-container {
-  border: 2px solid blue;
-  height: 50%;
+  height: 100px;
   width: fill
 }
 
 .trip-card-header {
-  border: 2px solid orange;
   width: fit-content;
   font-size: 20px;
   margin: 0 auto;
 }
 
 .trip-card-dates {
-  border: 2px solid yellow;
   width: fit-content;
   margin: 0 auto;
 }
 
 .trip-card-status {
-  border: 2px solid green;
   width: fit-content;
+  font-size: 15px;
+  margin-left: 5px;
 }
   
 .display {
