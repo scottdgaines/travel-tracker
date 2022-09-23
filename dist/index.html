@@ -1,16 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+    <title>Travel Tracker</title>
+  </head>
+  <body>
+    <h1 class="username-header header">Welcome<span class="username" id="userName">USERNAME</span></h1>
+    <h3 class="pending-trip-header text" id="pendingTrips">You have <span id="pendingTripCount">0</span> pending <span id="pluralTrip">trips</span></h3>
+    <nav class="navigation-bar">
+      <img src="" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
+      <a class="nav-icon text" id="viewUpcomingTrips">View Upcoming Trips</a>
+      <br><img src="" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
+      <a class="nav-icon text" id="viewPendingTrips">View Pending Trips</a>
+      <br><img src="" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
+      <a class="nav-icon text" id="viewPastTrips">View Past Trips</a>
+      <br><img src="" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
+      <a class="nav-icon text" id="starNewTrip">Start a New Trip</a>
+      <br><img src="" alt="A whimsical hot air balloon carries off it's occupant to a new destination" />
+      <a class="nav-icon text" id="viewBudget">View Your Budget</a>
+    </nav>
+    <section class="display-area" id="displayArea">
+      <h2 class="header" id="displayAreaHeader">Upcoming Trips</h2>
+      <div class="trip-card text" id="tripCard">
+        <h2 class="" id="cardDestination">Upcoming Trip Destination</h2>
+        <h3 class="" id="cardDates">Upcoming Trip dates</h3>
+        <h3 class="" id="cardTripStatus">Approved</h3>
+      </div>
+      <form class="new-trip-form text" id="newTripForm">
+        <label for="destination">Where would you like to go?</label>
+        <select name="destination" id="formDestination">
+          <option></option>
+        <label for="number-of-travelers">How many people will be going?</label>
+        <input name="number-of-travelers" type="text" />
+        <label for="date">When would you like to arrive?</label>
+        <input name="date" id="formDate" type="date" />
+        <label for="duration">How long would you like to stay?</label>
+        <input name="duration" id="formDuration" type="text" />
+        </select>
+      </form>
+      <div class="header" id="budgetDisplay">
+        <h3 class="text">Your trips this year totaled: <span id="budgetTripsTotal">0</span></h3>
+        <h3 class="text">Your agent fees this year totaled: <span id="budgetAgentFees">0</span></h3>
+        <h3 class="text">The total you've spent this year is: <span id="budgetTotal">0</span></h3>
+      </div>
+      <img src="" alt="A whimsical hot air balloon carrying off it's occupant to a new destination" />
+      <a class="nav-icon text" id="returnToMain">Back to Main</a>
+    </section>
+    <script src="bundle.js"></script>
+  </body>
 </html>
