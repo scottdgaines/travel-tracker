@@ -203,6 +203,10 @@ describe('Traveler', () => {
         expect(traveler1.returnUpcomingTrips(trips)).to.deep.equal(traveler1UpcomingTrips);
     });
 
+    it('Should return a list of all the trips taken in the current year', () => {
+        expect(traveler1.returnTripsPerYear(trips)).to.deep.equal(traveler1PreviousTrips);
+    });
+
     it('Should be able to instantiate a new trip', () => {
         expect(traveler1.createNewTrip(trips, destinations, newTripInputValues1)).to.deep.equal(trip1);
     });
@@ -212,16 +216,10 @@ describe('Traveler', () => {
         expect(trip2.destinationID).to.equal(10);
 
         let trip3 = traveler1.createNewTrip(trips, destinations, newTripInputValues2);
-        expect(trip3.destinationID).to.equal(20)
-    })
+        expect(trip3.destinationID).to.equal(20);
+    });
 
-    it.skip('Should be able to calculate the total amount a user has spent on all trips', () => {
-        let trip2 = traveler1.createNewTrip(trips, traveler1PreviousTrips[0])
-        let trip3 = traveler1.createNewTrip(trips, traveler1PreviousTrips[1])
-
-        trip2.findDestinationID(destinations, trip2.destinationID)
-        trip2.calculateCosts(destinations)
-        traveler1.calculateTotalSpent(trips)
-        
-    })
+    it('Should be able to calculate the total amount a user has spent on all trips', () => {
+        expect(traveler1.calculateTotalSpent(trips, destinations)).to.equal(3674);
+    });
 });
