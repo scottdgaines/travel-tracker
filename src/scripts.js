@@ -15,6 +15,7 @@ const pendingTripCount = document.getElementById('pendingTripCount');
 const pluralTrip = document.getElementById('pluralTrip');
 const upcomingTripCardContainer = document.getElementById('upcomingTripCardContainer');
 const previousTripCardContainer = document.getElementById('previousTripCardContainer');
+const pendingTripCardContainer = document.getElementById('pendingTripCardContainer');
 
 //GLOBAL VARIABLES
 let allUsers;
@@ -49,6 +50,7 @@ function populatePage() {
     renderPendingTripCount();
     renderUpcomingTrips();
     renderPreviousTrips();
+    renderPendingTrips();
 }
 
 function instantiateNewUser() {
@@ -116,6 +118,33 @@ function renderPreviousTrips() {
                     <h2 class="trip-card-header" id="cardDestination">${destination.destination}</h2>
                     <h3 class="trip-card-dates" id="cardDates">${previousTrips[index].date}</h3>
                     <h3 class="trip-card-status" id="cardTripStatus">${previousTrips[index].status}</h3>
+                </div>
+            </div> `
+        });
+    };
+}
+
+function renderPendingTrips() {
+    const pendingTrips = currentUser.returnPendingTrips(allTrips)
+    console.log('previous', pendingTrips)
+    
+    if (pendingTrips.length >= 1) {
+        const destinationDataSets = retrieveDestinationData(pendingTrips);
+        let index = -1;
+        console.log('destData', destinationDataSets)
+       
+        destinationDataSets.forEach(destination => { 
+            index++;
+   
+            pendingTripCardContainer.innerHTML += `
+            <div class="trip-card text" id="upcomingTripCard">
+                <div class="trip-card-image-container">
+                    <img class="card-image" src="${destination.image}" alt="${destination.alt}" />
+                </div>
+                <div class="trip-card-info-container">
+                    <h2 class="trip-card-header" id="cardDestination">${destination.destination}</h2>
+                    <h3 class="trip-card-dates" id="cardDates">${pendingTrips[index].date}</h3>
+                    <h3 class="trip-card-status" id="cardTripStatus">${pendingTrips[index].status}</h3>
                 </div>
             </div> `
         });
