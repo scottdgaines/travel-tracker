@@ -8,6 +8,7 @@
   text-align: center;
   margin: 0 auto;
   font-size: 30px;
+  margin-top: 10px;
 }
 
 .card-image {
@@ -114,10 +115,19 @@ body {
 .budget-header {
   font-size: 15px;
   margin: 0 auto;
+  margin-top: 15px;
+}
+
+.budget-card {
+  font-size: 30px;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 30px;
 }
 
 .create-new-trip-display {
   background-color: white;
+  border: 1px solid grey;
   border-radius: 25px;
   box-shadow: 5px 5px 5px grey;
   width: 95vw;
@@ -128,21 +138,50 @@ body {
 .new-trip-form-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
+
+
 form {
-  width: 50%;
-  margin-left: 20px;
+  width: fit-content;
+  margin-bottom: 30px;
 }
 
 button {
   margin-top: 5px;
   background-color: lightblue;
+  cursor: pointer;
+}
+
+.form-image {
+  height: 90px;
+  margin-top: 20px;
 }
 
 .new-trip-cost {
   font-size: 15px;
 }
 
+.agent-fee {
+  font-size: 15px;
+  margin: 0 auto;
+}
 
+.error-message {
+  border: 2px solid red;
+  margin: 0 auto;
+  font-size: 25px;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+/* Elements added by Javascript */
+
+.disabled {
+  cursor: auto;
+}
+
+.hidden {
+  display: none;
+}

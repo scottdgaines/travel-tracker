@@ -18,22 +18,23 @@
       <h3 class="pending-trip-message text" id="pendingTrips">You have <span id="pendingTripCount"></span> pending <span id="pluralTrip">trips</span></h3>
     </div>
     <div class="display-area">
-      <section class="display upcoming-trips" id="upcomingTrips">
-        <h2 class="display-header header" id="displayAreaHeader">Upcoming Trips</h2>
-        <div class="trip-card-display-container" id="upcomingTripCardContainer"></div>
-      </section>
       <section class="display previous-trips" id="previousTrips">
         <h2 class="display-header header" id="displayAreaHeader">Previous Trips</h2>
         <div class="trip-card-display-container" id="previousTripCardContainer"></div>
+      </section>
+      <section class="display upcoming-trips" id="upcomingTrips">
+        <h2 class="display-header header" id="displayAreaHeader">Upcoming Trips</h2>
+        <div class="trip-card-display-container" id="upcomingTripCardContainer"></div>
       </section>
       <section class="display pending-trips" id="pendingTrips">
         <h2 class="display-header header" id="displayAreaHeader">Pending Trips</h2>
         <div class="trip-card-display-container" id="pendingTripCardContainer"></div>
       </section>
       <section class="display budget" id="budgetCard">
-        <h2 class="display-header budget-header header" id="displayAreaHeader">Here's what you've spent this year:</h2>
+        <h2 class="display-header budget-header header" id="displayAreaHeader">Here's what you've spent this year:
+          <br>(Includes a 10% agent's fee)</h2>
         <div class="trip-card-display-container">
-          <div class="budget-card text"></div>
+          <div class="budget-card text" id="budgetCardInformation"></div>
         </div>
       </section>
     </div>
@@ -42,24 +43,26 @@
       <section class="new-trip-form-container">
         <form class="new-trip-form text" id="newTripForm">
           <br><label for="destination">Where would you like to go?</label>
-          <select name="destination" id="formDestination">
-            <option>Lima</option>
-            <option>Paris</option>
+          <select name="form-destinations" id="formDestinations">
+            <option>Choose your destination!</option>
           </select> 
           <br><label for="number-of-travelers">How many people will be going?</label>
-          <input name="number-of-travelers" type="text" />
+          <input name="number-of-travelers" type="text" id="formNumberOfTravelers" />
           <br><label for="date">When would you like to arrive?</label>
-          <input name="date" id="formDate" type="date" />
+          <input name="date" type="date" id="formDate" />
           <br><label for="duration">How long would you like to stay?</label>
-          <input name="duration" id="formDuration" type="text" />
+          <input name="duration" type="text" id="formDuration" />
           </select>
-          <br><button class="text" type="submit">Create Your Trip!</button>
+          <br><button class="text disabled" type="submit" id="submitButton" disabled>Create Your Trip!</button>
         </form>
-        <img src="./images/button-image.jpg" alt="A whimsical balloon carries it's passenger off to exotic locations in a strong wind" />
+        <img class="form-image" src="./images/button-image.jpg" alt="A whimsical balloon carries it's passenger off to exotic locations in a strong wind" />
         <div class="new-trip-cost" id="newTripCost">
-          <h2 class="header">Here's what it will cost:</h2>
+          <h2 class="header">Here's what it will cost:
+            <span class="agent-fee">(Includes a 10% agent's fee)</span>
+          </h2>
         </div>
       </section>
+      <h4 class="text error-message hidden" id="errorMessage">An error occurred, so there's no time to waste! Please contact your broker, and they'll fix it post-haste!</h4>
     </section>
     <script src="bundle.js"></script>
   </body>

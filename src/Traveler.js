@@ -38,12 +38,25 @@ class Traveler {
     };
 
     createNewTrip(trips, destinations, newTripData) {
+        const reformattedDate = this.reformatDate(newTripData);
         const tripID = this.generateTripID(trips);
         const destinationID = this.updateDestinationID(destinations, newTripData);
-        const newTrip = new Trip(tripID, this.id, newTripData, destinationID);
+        const newTrip = new Trip(tripID, this.id, newTripData, destinationID, reformattedDate);
 
         return newTrip;
     };
+
+    returnDestinationData(trips, destinations) {
+        const destinationIDs = this.returnDestinationID(trips)
+        let destinationDataSets = []
+    
+        const destinationData =  destinationIDs.forEach(id => {
+            let data = this.retrieveDestinationData(destinations, id)
+            destinationDataSets.push(data)
+            })
+    
+        return destinationDataSets
+    }
 
     calculateTotalSpent(trips, destinations) {
         const yearsTrips = this.returnTripsPerYear(trips);
@@ -72,6 +85,12 @@ class Traveler {
     generateTripID(trips) {
         return trips.length + 1;
     };
+
+    returnDestinationID(trips) {
+        return trips.map(trip => {
+            return trip.destinationID
+        })
+    }
 
     updateDestinationID(destinations, newTripData) {
         const destinationID = destinations.find(destination => {
@@ -106,6 +125,15 @@ class Traveler {
             return destination.id === destinationID;
         });
     };
+
+    reformatDate(newTripData) {
+        const reformattedDate = newTripData.date.split('-')
+        .join('/')
+
+        console.log('newDate', reformattedDate)
+
+        return reformattedDate
+    }
 };
 
 export default Traveler;

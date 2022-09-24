@@ -1,10 +1,10 @@
 class Trip {
-    constructor(tripID, travelerID, newTripData, destinationID) {
+    constructor(tripID, travelerID, newTripData, destinationID, date) {
         this.id = tripID,
         this.userID = travelerID,
         this.destinationID = destinationID,
         this.travelers = newTripData.travelers,
-        this.date = newTripData.date,
+        this.date = date,
         this.duration = newTripData.duration,
         this.status = 'pending',
         this.suggestedActivities = []
