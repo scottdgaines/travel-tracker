@@ -38,9 +38,10 @@ class Traveler {
     };
 
     createNewTrip(trips, destinations, newTripData) {
+        const reformattedDate = this.reformatDate(newTripData);
         const tripID = this.generateTripID(trips);
         const destinationID = this.updateDestinationID(destinations, newTripData);
-        const newTrip = new Trip(tripID, this.id, newTripData, destinationID);
+        const newTrip = new Trip(tripID, this.id, newTripData, destinationID, reformattedDate);
 
         return newTrip;
     };
@@ -106,6 +107,15 @@ class Traveler {
             return destination.id === destinationID;
         });
     };
+
+    reformatDate(newTripData) {
+        const reformattedDate = newTripData.date.split('-')
+        .join('/')
+
+        console.log('newDate', reformattedDate)
+
+        return reformattedDate
+    }
 };
 
 export default Traveler;
