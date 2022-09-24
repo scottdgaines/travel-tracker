@@ -1,3 +1,5 @@
+import updateData from './scripts.js'
+
 function fetchData(dataCategory) {
     return fetch(`http://localhost:3001/api/v1/${dataCategory}`)
         .then(response => response.json())
@@ -19,6 +21,7 @@ function handleErrors(response) {
     if (!response.ok) {
         throw Error(response.statusText);
     } else {
+        updateData()
         return response
     }
  }

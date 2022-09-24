@@ -50,13 +50,13 @@ function loadData() {
 
 function updateData() {
     fetchData('trips')
-        .then((dataSet => {
+        .then((dataSet) => {
             allTrips = dataSet.trips;
             console.log("The update worked", allTrips)
             renderUpcomingTrips()
             renderPendingTripCount()
             renderPendingTrips()
-       }));
+       });
    };
 
 //EVENT LISTENERS
@@ -210,7 +210,6 @@ function submitData() {
 
     console.log(newTrip)
     fetchPost(newTrip)
-    updateData()
     resetForm()
 }
 
@@ -245,6 +244,9 @@ function returnDestinationID(trips) {
         return trip.destinationID
     })
 }
+
+
+export default updateData;
 
 
 
