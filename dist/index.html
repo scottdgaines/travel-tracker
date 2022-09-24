@@ -56,13 +56,15 @@
           <br><button class="text disabled" type="submit" id="submitButton" disabled>Create Your Trip!</button>
         </form>
         <img class="form-image" src="./images/button-image.jpg" alt="A whimsical balloon carries it's passenger off to exotic locations in a strong wind" />
-        <div class="new-trip-cost" id="newTripCost">
-          <h2 class="header">Here's what it will cost:
-            <span class="agent-fee">(Includes a 10% agent's fee)</span>
+        <div class="new-trip-cost-display">
+          <h2 class="header">Here's what it will cost: <br>
+            <span class="agent-fee">(Includes a 10% agent's fee)</span><br>
+            <span class="new-trip-cost" id="newTripCost"></span>
           </h2>
         </div>
       </section>
       <h4 class="text error-message hidden" id="errorMessage">An error occurred, so there's no time to waste! Please contact your broker, and they'll fix it post-haste!</h4>
+      
     </section>
     <script src="bundle.js"></script>
   </body>
