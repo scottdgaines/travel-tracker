@@ -24,6 +24,7 @@ const formDate = document.getElementById('formDate');
 const formDuration = document.getElementById('formDuration');
 const submitButton = document.getElementById('submitButton');
 const errorMessage = document.getElementById('errorMessage');
+const newTripCost = document.getElementById('newTripCost');
 
 //GLOBAL VARIABLES
 let allUsers;
@@ -206,6 +207,7 @@ function submitData() {
     fetchPost(newTrip)
     updateData()
     resetForm()
+    renderNewTripCost(newTrip)
 }
 
 function resetForm() {
@@ -215,6 +217,12 @@ function resetForm() {
     // })
     submitButton.disabled = true;
     submitButton.classList.add('disabled');
+}
+
+function renderNewTripCost() {
+    const cost = newTrip.calculateCosts(allDestinations)
+console.log('cost', cost)
+    newTripCost.innerText = `$${cost}`
 }
 
 //HELPER FUNCTIONS
