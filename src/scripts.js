@@ -33,7 +33,7 @@ let allTrips;
 let allDestinations;
 let randomUserID;
 let newTrip;
-const inputs = [formDestinations, formNumberOfTravelers, formDate, formDuration];
+const formInputs = [formDestinations, formNumberOfTravelers, formDate, formDuration];
 
 
 //FETCH REQUESTS
@@ -48,10 +48,22 @@ function loadData() {
     }));
 };
 
+function updateData() {
+    fetchData('trips', 'tripsData')
+        .then((dataSet => {
+            console.log("The update worked", allTrips)
+            allTrips = dataSet.trips;
+            console.log("The update worked", allTrips)
+            renderUpcomingTrips()
+            renderPendingTripCount()
+            renderPendingTrips()
+       }));
+   };
+
 //EVENT LISTENERS
 window.addEventListener('load', generateRandomUserID)
 window.addEventListener('load', loadData);
-inputs.forEach(input => {
+formInputs.forEach(input => {
     input.addEventListener('input', function() { enableButton() })
     })
 submitButton.addEventListener('click', submitData)
@@ -78,7 +90,8 @@ function renderWelcomeMessage() {
 }
 
 function renderPendingTripCount() {
-    const pendingTrips = currentUser.returnPendingTrips(allTrips);
+    console.log('pendingCount')
+    let pendingTrips = currentUser.returnPendingTrips(allTrips);
     pendingTripCount.innerText = pendingTrips.length;
 
     if (pendingTrips.length === 1) {
@@ -87,13 +100,10 @@ function renderPendingTripCount() {
 }
 
 function renderPreviousTrips() {
-    const previousTrips = currentUser.returnPreviousTrips(allTrips)
-        .sort((trip1, trip2) => {
-            return trip2.date - trip1.date
-        })
+    let previousTrips = currentUser.returnPreviousTrips(allTrips)
     
     if (previousTrips.length >= 1) {
-        const destinationDataSets = retrieveDestinationData(previousTrips);
+       let destinationDataSets = retrieveDestinationData(previousTrips);
         let index = -1;
        
         destinationDataSets.forEach(destination => { 
@@ -115,13 +125,10 @@ function renderPreviousTrips() {
 }
 
 function renderUpcomingTrips() {
-    const upcomingTrips = currentUser.returnUpcomingTrips(allTrips)
-        .sort((trip1, trip2) => {
-            return trip2.date - trip1.date
-        })
+    let upcomingTrips = currentUser.returnUpcomingTrips(allTrips)
     
     if (upcomingTrips.length >= 1) {
-        const destinationDataSets = retrieveDestinationData(upcomingTrips);
+       let destinationDataSets = retrieveDestinationData(upcomingTrips);
         let index = -1;
        
         destinationDataSets.forEach(destination => { 
@@ -143,13 +150,12 @@ function renderUpcomingTrips() {
 }
 
 function renderPendingTrips() {
-    const pendingTrips = currentUser.returnPendingTrips(allTrips)
-        .sort((trip1, trip2) => {
-            return trip2.date - trip1.date
-        })
+    console.log('returnPendingTrips', currentUser.returnPendingTrips(allTrips))
+    let pendingTrips = currentUser.returnPendingTrips(allTrips)
     
     if (pendingTrips.length >= 1) {
-        const destinationDataSets = retrieveDestinationData(pendingTrips);
+        console.log('we got pending trips')
+        let destinationDataSets = retrieveDestinationData(pendingTrips);
         let index = -1;
        
         destinationDataSets.forEach(destination => { 
@@ -201,8 +207,21 @@ function submitData() {
     }
 
     newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData)
+
     console.log(newTrip)
     fetchPost(newTrip)
+    updateData()
+    resetForm()
+}
+
+function resetForm() {
+    console.log('resetForm')
+    // formInputs.forEach(input => {
+    //     console.log(input)
+    //     input.reset()
+    // })
+    submitButton.disabled = true;
+    submitButton.classList.add('disabled');
 }
 
 //HELPER FUNCTIONS
