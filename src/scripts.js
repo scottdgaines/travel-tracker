@@ -1,6 +1,6 @@
 //IMPORTS
 import './css/styles.css';
-import fetchData from './apiCalls.js'
+import { fetchData, fetchPost } from './apiCalls.js'
 import Traveler from './Traveler.js'
 
 //IMAGES
@@ -8,6 +8,7 @@ import Traveler from './Traveler.js'
 import './images/man.jpg'
 import './images/main-background-2.jpg'
 import './images/button-image.jpg'
+import Trip from './Trip';
 
 //QUERY SELECTORS
 const userName = document.getElementById('userName');
@@ -22,6 +23,7 @@ const formNumberOfTravelers = document.getElementById('formNumberOfTravelers')
 const formDate = document.getElementById('formDate');
 const formDuration = document.getElementById('formDuration');
 const submitButton = document.getElementById('submitButton');
+const errorMessage = document.getElementById('errorMessage');
 
 //GLOBAL VARIABLES
 let allUsers;
@@ -30,6 +32,7 @@ let currentUser
 let allTrips;
 let allDestinations;
 let randomUserID;
+let newTrip;
 const inputs = [formDestinations, formNumberOfTravelers, formDate, formDuration];
 
 
@@ -51,6 +54,7 @@ window.addEventListener('load', loadData);
 inputs.forEach(input => {
     input.addEventListener('input', function() { enableButton() })
     })
+submitButton.addEventListener('click', submitData)
 
 
 //EVENT HANDLERS
@@ -170,7 +174,6 @@ function renderYearlySpending() {
     const totalSpent = currentUser.calculateTotalSpent(allTrips,allDestinations)
 
     budgetCard.innerText = `$${totalSpent}`
-    console.log('total', totalSpent)
 }
 
 function populateFormDestinations() {
@@ -187,7 +190,20 @@ function enableButton() {
     }
 }
 
+function submitData() {
+    event.preventDefault();
 
+    const newTripData = {
+        destinationName: formDestinations.value,
+        travelers: formNumberOfTravelers.value,
+        date: formDate.value,
+        duration: formDuration.value
+    }
+
+    newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData)
+    console.log(newTrip)
+    fetchPost(newTrip)
+}
 
 //HELPER FUNCTIONS
 function generateRandomUserID() {
