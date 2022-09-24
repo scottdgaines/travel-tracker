@@ -38,7 +38,7 @@ const formInputs = [formDestinations, formNumberOfTravelers, formDate, formDurat
 
 //FETCH REQUESTS
 function loadData() {
- Promise.all([fetchData('travelers', 'travelerData'), fetchData(`travelers/${randomUserID}`, 'singleTravelerData'), fetchData('trips', 'tripsData'), fetchData('destinations', 'destinationData')])
+ Promise.all([fetchData('travelers'), fetchData(`travelers/${randomUserID}`), fetchData('trips'), fetchData('destinations')])
     .then((dataSet => {
         allUsers = dataSet[0].travelers;
         userData = dataSet[1];
@@ -49,9 +49,8 @@ function loadData() {
 };
 
 function updateData() {
-    fetchData('trips', 'tripsData')
+    fetchData('trips')
         .then((dataSet => {
-            console.log("The update worked", allTrips)
             allTrips = dataSet.trips;
             console.log("The update worked", allTrips)
             renderUpcomingTrips()
@@ -90,7 +89,6 @@ function renderWelcomeMessage() {
 }
 
 function renderPendingTripCount() {
-    console.log('pendingCount')
     let pendingTrips = currentUser.returnPendingTrips(allTrips);
     pendingTripCount.innerText = pendingTrips.length;
 
@@ -152,6 +150,8 @@ function renderUpcomingTrips() {
 function renderPendingTrips() {
     console.log('returnPendingTrips', currentUser.returnPendingTrips(allTrips))
     let pendingTrips = currentUser.returnPendingTrips(allTrips)
+    console.log('before data submission', pendingTrips.length)
+    console.log('after submit', pendingTrips.length)
     
     if (pendingTrips.length >= 1) {
         console.log('we got pending trips')
@@ -215,7 +215,6 @@ function submitData() {
 }
 
 function resetForm() {
-    console.log('resetForm')
     // formInputs.forEach(input => {
     //     console.log(input)
     //     input.reset()
