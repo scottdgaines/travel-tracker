@@ -25,6 +25,7 @@ const formDuration = document.getElementById('formDuration');
 const submitButton = document.getElementById('submitButton');
 const errorMessage = document.getElementById('errorMessage');
 const confirmationMessage = document.getElementById('confirmationMessage');
+const newTripCost = document.getElementById('newTripCost');
 
 //GLOBAL VARIABLES
 let allUsers;
@@ -53,7 +54,6 @@ function updateData() {
     fetchData('trips')
         .then((dataSet) => {
             allTrips = dataSet.trips;
-            console.log("The update worked", allTrips)
             renderUpcomingTrips()
             renderPendingTripCount()
             renderPendingTrips()
@@ -213,11 +213,17 @@ function submitData() {
     console.log(newTrip)
     fetchPost(newTrip)
     resetForm()
+    const total = newTrip.calculateCosts(allDestinations)
+    showNewTripCost(total)
 }
 
 function showConfirmationMessage() {
     confirmationMessage.classList.remove('hidden')
     setTimeout(hide, 5000)
+}
+
+function showNewTripCost(total) {
+    newTripCost.innerText = `$${total}`
 }
 
 function hide() {
