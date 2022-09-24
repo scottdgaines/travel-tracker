@@ -52,7 +52,6 @@ function updateData() {
     fetchData('trips')
         .then((dataSet => {
             allTrips = dataSet.trips;
-            console.log("The update worked", allTrips)
             renderUpcomingTrips()
             renderPendingTripCount()
             renderPendingTrips()
@@ -148,13 +147,9 @@ function renderUpcomingTrips() {
 }
 
 function renderPendingTrips() {
-    console.log('returnPendingTrips', currentUser.returnPendingTrips(allTrips))
     let pendingTrips = currentUser.returnPendingTrips(allTrips)
-    console.log('before data submission', pendingTrips.length)
-    console.log('after submit', pendingTrips.length)
     
     if (pendingTrips.length >= 1) {
-        console.log('we got pending trips')
         let destinationDataSets = retrieveDestinationData(pendingTrips);
         let index = -1;
        
@@ -208,7 +203,6 @@ function submitData() {
 
     newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData)
 
-    console.log(newTrip)
     fetchPost(newTrip)
     updateData()
     resetForm()
