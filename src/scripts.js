@@ -24,6 +24,7 @@ const formDate = document.getElementById('formDate');
 const formDuration = document.getElementById('formDuration');
 const submitButton = document.getElementById('submitButton');
 const errorMessage = document.getElementById('errorMessage');
+const confirmationMessage = document.getElementById('confirmationMessage');
 
 //GLOBAL VARIABLES
 let allUsers;
@@ -56,6 +57,7 @@ function updateData() {
             renderUpcomingTrips()
             renderPendingTripCount()
             renderPendingTrips()
+            showConfirmationMessage()
        });
    };
 
@@ -213,6 +215,16 @@ function submitData() {
     resetForm()
 }
 
+function showConfirmationMessage() {
+    confirmationMessage.classList.remove('hidden')
+    setTimeout(hide, 5000)
+}
+
+function hide() {
+    confirmationMessage.classList.add('hidden')
+    errorMessage.classList.add('hidden')
+}
+
 function resetForm() {
     // formInputs.forEach(input => {
     //     console.log(input)
@@ -246,7 +258,7 @@ function returnDestinationID(trips) {
 }
 
 
-export default updateData;
+export { updateData, hide };
 
 
 

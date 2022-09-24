@@ -168,13 +168,14 @@ button {
   margin: 0 auto;
 }
 
-.error-message {
-  border: 2px solid red;
+.message {
   margin: 0 auto;
-  font-size: 25px;
+  font-size: 20px;
   width: fit-content;
   margin-bottom: 10px;
 }
+
+
 
 /* Elements added by Javascript */
 
