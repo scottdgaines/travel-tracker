@@ -14,9 +14,9 @@ import Trip from './Trip';
 const userName = document.getElementById('userName');
 const pendingTripCount = document.getElementById('pendingTripCount');
 const pluralTrip = document.getElementById('pluralTrip');
-const previousTripCardContainer = document.getElementById('previousTripCardContainer');
-const upcomingTripCardContainer = document.getElementById('upcomingTripCardContainer');
-const pendingTripCardContainer = document.getElementById('pendingTripCardContainer');
+const previousTripsCardContainer = document.getElementById('previousTripsCardContainer');
+const upcomingTripsCardContainer = document.getElementById('upcomingTripsCardContainer');
+const pendingTripsCardContainer = document.getElementById('pendingTripsCardContainer');
 const budgetCard = document.getElementById('budgetCardInformation');
 const formDestinations = document.getElementById('formDestinations');
 const formNumberOfTravelers = document.getElementById('formNumberOfTravelers')
@@ -30,12 +30,13 @@ const newTripCost = document.getElementById('newTripCost');
 //GLOBAL VARIABLES
 let allUsers;
 let userData;
-let currentUser
+let currentUser;
 let allTrips;
 let allDestinations;
 let randomUserID;
 let newTrip;
 const formInputs = [formDestinations, formNumberOfTravelers, formDate, formDuration];
+const cardContainers = [previousTripsCardContainer, upcomingTripsCardContainer, pendingTripsCardContainer];
 
 
 //FETCH REQUESTS
@@ -56,7 +57,7 @@ function updateData() {
             allTrips = dataSet.trips;
             renderUpcomingTrips()
             renderPendingTripCount()
-            renderPendingTrips()
+            renderNewPendingTrip()
             showConfirmationMessage()
        });
    };
@@ -103,49 +104,16 @@ function renderPreviousTrips() {
     let previousTrips = currentUser.returnPreviousTrips(allTrips)
     
     if (previousTrips.length >= 1) {
-       let destinationDataSets = retrieveDestinationData(previousTrips);
-        let index = -1;
-       
-        destinationDataSets.forEach(destination => { 
-            index++;
-   
-            previousTripCardContainer.innerHTML += `
-            <div class="trip-card text" id="upcomingTripCard">
-                <div class="trip-card-image-container">
-                    <img class="card-image" src="${destination.image}" alt="${destination.alt}" />
-                </div>
-                <div class="trip-card-info-container">
-                    <h2 class="trip-card-header" id="cardDestination">${destination.destination}</h2>
-                    <h3 class="trip-card-dates" id="cardDates">${previousTrips[index].date}</h3>
-                    <h3 class="trip-card-status" id="cardTripStatus">${previousTrips[index].status}</h3>
-                </div>
-            </div> `
-        });
+        renderCard('previousTripsCardContainer', previousTrips)
     };
-}
+};
+
 
 function renderUpcomingTrips() {
     let upcomingTrips = currentUser.returnUpcomingTrips(allTrips)
     
     if (upcomingTrips.length >= 1) {
-       let destinationDataSets = retrieveDestinationData(upcomingTrips);
-        let index = -1;
-       
-        destinationDataSets.forEach(destination => { 
-            index++;
-   
-            upcomingTripCardContainer.innerHTML += `
-            <div class="trip-card text" id="upcomingTripCard">
-                <div class="trip-card-image-container">
-                    <img class="card-image" src="${destination.image}" alt="${destination.alt}" />
-                </div>
-                <div class="trip-card-info-container">
-                    <h2 class="trip-card-header" id="cardDestination">${destination.destination}</h2>
-                    <h3 class="trip-card-dates" id="cardDates">${upcomingTrips[index].date}</h3>
-                    <h3 class="trip-card-status" id="cardTripStatus">${upcomingTrips[index].status}</h3>
-                </div>
-            </div> `
-        })
+        renderCard('upcomingTripsCardContainer', upcomingTrips)
     }
 }
 
@@ -153,25 +121,49 @@ function renderPendingTrips() {
     let pendingTrips = currentUser.returnPendingTrips(allTrips)
     
     if (pendingTrips.length >= 1) {
-        let destinationDataSets = retrieveDestinationData(pendingTrips);
-        let index = -1;
-       
-        destinationDataSets.forEach(destination => { 
-            index++;
-   
-            pendingTripCardContainer.innerHTML += `
-            <div class="trip-card text" id="upcomingTripCard">
-                <div class="trip-card-image-container">
-                    <img class="card-image" src="${destination.image}" alt="${destination.alt}" />
-                </div>
-                <div class="trip-card-info-container">
-                    <h2 class="trip-card-header" id="cardDestination">${destination.destination}</h2>
-                    <h3 class="trip-card-dates" id="cardDates">${pendingTrips[index].date}</h3>
-                    <h3 class="trip-card-status" id="cardTripStatus">${pendingTrips[index].status}</h3>
-                </div>
-            </div> `
+        renderCard('pendingTripsCardContainer', pendingTrips)
+    }
+};
+
+function renderCard(cardCategory, tripData) {
+    let destinationDataSets = retrieveDestinationData(tripData);
+    let index = -1;
+    
+    destinationDataSets.forEach(destination => { 
+        index++;
+
+        cardContainers.forEach(cardContainer => {
+            if (cardContainer.id === cardCategory) {
+                cardContainer.innerHTML += `
+                    <div class="trip-card text" id="${cardCategory}Card">
+                        <div class="trip-card-image-container">
+                            <img class="card-image" src="${destination.image}" alt="${destination.alt}" />
+                        </div>
+                        <div class="trip-card-info-container">
+                            <h2 class="trip-card-header" id="cardDestination">${destination.destination}</h2>
+                            <h3 class="trip-card-dates" id="cardDates">${tripData[index].date}</h3>
+                            <h3 class="trip-card-status" id="cardTripStatus">${tripData[index].status}</h3>
+                        </div>
+                    </div> `
+            };
         });
-    };
+    });
+};
+
+function renderNewPendingTrip() {
+    let destinationDataSet = retrieveDestinationData([newTrip]); //returns array
+
+        pendingTripsCardContainer.innerHTML += `
+        <div class="trip-card text" id="upcomingTripCard">
+            <div class="trip-card-image-container">
+                <img class="card-image" src="${destinationDataSet[0].image}" alt="${destinationDataSet[0].alt}" />
+            </div>
+            <div class="trip-card-info-container">
+                <h2 class="trip-card-header" id="cardDestination">${destinationDataSet[0].destination}</h2>
+                <h3 class="trip-card-dates" id="cardDates">${newTrip.date}</h3>
+                <h3 class="trip-card-status" id="cardTripStatus">${newTrip.status}</h3>
+            </div>
+        </div> `
 }
 
 function renderYearlySpending() {
@@ -205,16 +197,16 @@ function submitData() {
     }
 
     newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData)
+    const total = newTrip.calculateCosts(allDestinations)
 
     fetchPost(newTrip)
     resetForm()
-    const total = newTrip.calculateCosts(allDestinations)
     showNewTripCost(total)
 }
 
 function showConfirmationMessage() {
     confirmationMessage.classList.remove('hidden')
-    setTimeout(hide, 5000)
+    setTimeout(hide, 6000)
 }
 
 function showNewTripCost(total) {
