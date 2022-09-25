@@ -150,13 +150,9 @@ function renderUpcomingTrips() {
 }
 
 function renderPendingTrips() {
-    console.log('returnPendingTrips', currentUser.returnPendingTrips(allTrips))
     let pendingTrips = currentUser.returnPendingTrips(allTrips)
-    console.log('before data submission', pendingTrips.length)
-    console.log('after submit', pendingTrips.length)
     
     if (pendingTrips.length >= 1) {
-        console.log('we got pending trips')
         let destinationDataSets = retrieveDestinationData(pendingTrips);
         let index = -1;
        
@@ -210,7 +206,6 @@ function submitData() {
 
     newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData)
 
-    console.log(newTrip)
     fetchPost(newTrip)
     resetForm()
     const total = newTrip.calculateCosts(allDestinations)
@@ -238,6 +233,12 @@ function resetForm() {
     // })
     submitButton.disabled = true;
     submitButton.classList.add('disabled');
+}
+
+function renderNewTripCost() {
+    const cost = newTrip.calculateCosts(allDestinations)
+console.log('cost', cost)
+    newTripCost.innerText = `$${cost}`
 }
 
 //HELPER FUNCTIONS
