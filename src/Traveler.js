@@ -46,6 +46,18 @@ class Traveler {
         return newTrip;
     };
 
+    returnDestinationData(trips, destinations) {
+        const destinationIDs = this.returnDestinationID(trips)
+        let destinationDataSets = []
+    
+        const destinationData =  destinationIDs.forEach(id => {
+            let data = this.retrieveDestinationData(destinations, id)
+            destinationDataSets.push(data)
+            })
+    
+        return destinationDataSets
+    }
+
     calculateTotalSpent(trips, destinations) {
         const yearsTrips = this.returnTripsPerYear(trips);
 
@@ -73,6 +85,12 @@ class Traveler {
     generateTripID(trips) {
         return trips.length + 1;
     };
+
+    returnDestinationID(trips) {
+        return trips.map(trip => {
+            return trip.destinationID
+        })
+    }
 
     updateDestinationID(destinations, newTripData) {
         const destinationID = destinations.find(destination => {

@@ -227,6 +227,12 @@ function resetForm() {
     submitButton.classList.add('disabled');
 }
 
+function renderNewTripCost() {
+    const cost = newTrip.calculateCosts(allDestinations)
+console.log('cost', cost)
+    newTripCost.innerText = `$${cost}`
+}
+
 //HELPER FUNCTIONS
 function generateRandomUserID() {
     randomUserID = Math.floor(Math.random() * (50 - 1) + 1);
