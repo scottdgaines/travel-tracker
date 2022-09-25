@@ -112,7 +112,8 @@ body {
   flex-direction: row;
 }
 
-.budget-header {
+.budget-text {
+  text-align: center;
   font-size: 15px;
   margin: 0 auto;
   margin-top: 15px;
@@ -161,6 +162,11 @@ button {
 
 .new-trip-cost-display {
   font-size: 15px;
+}
+
+.new-trip-cost {
+  font-size: 30px;
+  margin: 0 auto;
 }
 
 .agent-fee {
