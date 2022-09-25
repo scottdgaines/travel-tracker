@@ -158,6 +158,11 @@ button {
   font-size: 15px;
 }
 
+.new-trip-cost-header {
+  font-size: 15px;
+  text-align: center;
+}
+
 .new-trip-cost {
   font-size: 30px;
   margin: 0 auto;
