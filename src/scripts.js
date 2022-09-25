@@ -18,6 +18,7 @@ const previousTripsCardContainer = document.getElementById('previousTripsCardCon
 const upcomingTripsCardContainer = document.getElementById('upcomingTripsCardContainer');
 const pendingTripsCardContainer = document.getElementById('pendingTripsCardContainer');
 const budgetCard = document.getElementById('budgetCardInformation');
+const newTripForm = document.getElementById('newTripForm');
 const formDestinations = document.getElementById('formDestinations');
 const formNumberOfTravelers = document.getElementById('formNumberOfTravelers')
 const formDate = document.getElementById('formDate');
@@ -179,7 +180,7 @@ function populateFormDestinations() {
 }
 
 function enableButton() {
-    if (formDestinations.value != 'Choose your destination!' && formNumberOfTravelers.value != ''
+    if (formDestinations.value != 'Destination' && formNumberOfTravelers.value != ''
         && formDate.value != '' && formDuration.value != '') {
         submitButton.disabled = false;
         submitButton.classList.remove('disabled');
@@ -219,10 +220,7 @@ function hide() {
 }
 
 function resetForm() {
-    // formInputs.forEach(input => {
-    //     console.log(input)
-    //     input.reset()
-    // })
+    newTripForm.reset()
     submitButton.disabled = true;
     submitButton.classList.add('disabled');
 }
@@ -256,9 +254,4 @@ function returnDestinationID(trips) {
     })
 }
 
-
 export { updateData, hide };
-
-
-
-
