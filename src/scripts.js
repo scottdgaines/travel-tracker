@@ -24,6 +24,7 @@ const formNumberOfTravelers = document.getElementById('formNumberOfTravelers')
 const formDate = document.getElementById('formDate');
 const formDuration = document.getElementById('formDuration');
 const submitButton = document.getElementById('submitButton');
+const inputErrorMessage = document.getElementById('inputErrorMessage');
 const errorMessage = document.getElementById('errorMessage');
 const confirmationMessage = document.getElementById('confirmationMessage');
 const newTripCost = document.getElementById('newTripCost');
@@ -67,7 +68,7 @@ function updateData() {
 window.addEventListener('load', generateRandomUserID)
 window.addEventListener('load', loadData);
 formInputs.forEach(input => {
-    input.addEventListener('input', function() { enableButton() })
+    input.addEventListener('input', function() { validateInputEntries() })
     })
 submitButton.addEventListener('click', submitData)
 
@@ -179,12 +180,21 @@ function populateFormDestinations() {
     });
 }
 
-function enableButton() {
-    if (formDestinations.value != 'Destination' && formNumberOfTravelers.value != ''
-        && formDate.value != '' && formDuration.value != '') {
-        submitButton.disabled = false;
-        submitButton.classList.remove('disabled');
+function validateInputEntries() {
+    if (formDestinations.value != 'Destination' && 
+    (formNumberOfTravelers.value != '' && !isNaN(formNumberOfTravelers.value))
+    && formDate.value != '' && 
+    (formDuration.value != '' && !isNaN(formDuration.value))) {
+    enableButton()
+    } else if (isNaN(formNumberOfTravelers.value) || isNaN(formDuration.value)) {
+    inputErrorMessage.classList.remove('hidden')
+    setTimeout(hide, 5000)
     }
+}
+
+function enableButton() {
+    submitButton.disabled = false;
+    submitButton.classList.remove('disabled');
 }
 
 function submitData() {
@@ -217,6 +227,7 @@ function showNewTripCost(total) {
 function hide() {
     confirmationMessage.classList.add('hidden')
     errorMessage.classList.add('hidden')
+    inputErrorMessage.classList.add('hidden')
 }
 
 function resetForm() {
