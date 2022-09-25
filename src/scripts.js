@@ -182,13 +182,13 @@ function populateFormDestinations() {
 
 function validateInputEntries() {
     if (formDestinations.value != 'Destination' && 
-    (formNumberOfTravelers.value != '' && !isNaN(formNumberOfTravelers.value))
-    && formDate.value != '' && 
-    (formDuration.value != '' && !isNaN(formDuration.value))) {
-    enableButton()
-    } else if (isNaN(formNumberOfTravelers.value) || isNaN(formDuration.value)) {
-    inputErrorMessage.classList.remove('hidden')
-    setTimeout(hide, 5000)
+        (formNumberOfTravelers.value != '' && !isNaN(formNumberOfTravelers.value))
+        && formDate.value != '' && 
+        (formDuration.value != '' && !isNaN(formDuration.value))) {
+        enableButton()
+        } else if (isNaN(formNumberOfTravelers.value) || isNaN(formDuration.value)) {
+        inputErrorMessage.classList.remove('hidden')
+        setTimeout(hide, 5000)
     }
 }
 
