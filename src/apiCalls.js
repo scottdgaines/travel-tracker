@@ -3,8 +3,8 @@ import { updateData, hide } from './scripts.js'
 function fetchData(dataCategory) {
     return fetch(`http://localhost:3001/api/v1/${dataCategory}`)
         .then(response => response.json())
-        .then(data => data)
-}
+        .then(data => data);
+};
 
 function fetchPost(newTripData) {
     return fetch('http://localhost:3001/api/v1/trips', {
@@ -14,21 +14,23 @@ function fetchPost(newTripData) {
     })
         .then(response => handleErrors(response))
         .then(response => response.json())
-        .catch(err => showErrorMessage())
-}
+        .catch(err => showErrorMessage());
+};
 
 function handleErrors(response) {
     if (!response.ok) {
         throw Error(response.statusText);
     } else {
-        updateData()
-        return response
-    }
- }
+        updateData();
+
+        return response;
+    };
+ };
 
 function showErrorMessage() {
-    errorMessage.classList.remove('hidden')
-    setTimeout(hide, 5000)
-}
+    errorMessage.classList.remove('hidden');
 
-export { fetchData, fetchPost }
+    setTimeout(hide, 5000);
+};
+
+export { fetchData, fetchPost };

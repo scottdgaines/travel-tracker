@@ -1,14 +1,13 @@
 //IMPORTS
 import './css/styles.css';
-import { fetchData, fetchPost } from './apiCalls.js'
-import Traveler from './Traveler.js'
+import { fetchData, fetchPost } from './apiCalls.js';
+import Traveler from './Traveler.js';
 
 //IMAGES
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/man.jpg'
-import './images/main-background-2.jpg'
-import './images/button-image.jpg'
-import Trip from './Trip';
+import './images/man.jpg';
+import './images/main-background-2.jpg';
+import './images/button-image.jpg';
 
 //QUERY SELECTORS
 const userName = document.getElementById('userName');
@@ -30,7 +29,6 @@ const confirmationMessage = document.getElementById('confirmationMessage');
 const newTripCost = document.getElementById('newTripCost');
 
 //GLOBAL VARIABLES
-let allUsers;
 let userData;
 let currentUser;
 let allTrips;
@@ -43,13 +41,12 @@ const cardContainers = [previousTripsCardContainer, upcomingTripsCardContainer, 
 
 //FETCH REQUESTS
 function loadData() {
- Promise.all([fetchData('travelers'), fetchData(`travelers/${randomUserID}`), fetchData('trips'), fetchData('destinations')])
+ Promise.all([fetchData(`travelers/${randomUserID}`), fetchData('trips'), fetchData('destinations')])
     .then((dataSet => {
-        allUsers = dataSet[0].travelers;
-        userData = dataSet[1];
-        allTrips = dataSet[2].trips;
-        allDestinations = dataSet[3].destinations;
-        populatePage()
+        userData = dataSet[0];
+        allTrips = dataSet[1].trips;
+        allDestinations = dataSet[2].destinations;
+        populatePage();
     }));
 };
 
@@ -57,20 +54,20 @@ function updateData() {
     fetchData('trips')
         .then((dataSet) => {
             allTrips = dataSet.trips;
-            renderUpcomingTrips()
-            renderPendingTripCount()
-            renderNewPendingTrip()
-            showConfirmationMessage()
+            renderUpcomingTrips();
+            renderPendingTripCount();
+            renderNewPendingTrip();
+            showConfirmationMessage();
        });
    };
 
 //EVENT LISTENERS
-window.addEventListener('load', generateRandomUserID)
+window.addEventListener('load', generateRandomUserID);
 window.addEventListener('load', loadData);
 formInputs.forEach(input => {
     input.addEventListener('input', function() { validateInputEntries() })
-    })
-submitButton.addEventListener('click', submitData)
+    });
+submitButton.addEventListener('click', submitData);
 
 
 //EVENT HANDLERS
@@ -83,48 +80,49 @@ function populatePage() {
     renderPendingTrips();
     renderYearlySpending();
     populateFormDestinations();
-}
+};
 
 function instantiateNewUser() {
-    currentUser = new Traveler(userData)
-}
+    currentUser = new Traveler(userData);
+};
 
 function renderWelcomeMessage() {
-    userName.innerText = currentUser.name
-}
+    userName.innerText = currentUser.name;
+};
 
 function renderPendingTripCount() {
     let pendingTrips = currentUser.returnPendingTrips(allTrips);
+
     pendingTripCount.innerText = pendingTrips.length;
 
     if (pendingTrips.length === 1) {
-        pluralTrip.innerText = 'trip'
-    }
-}
+        pluralTrip.innerText = 'trip';
+    };
+};
 
 function renderPreviousTrips() {
-    let previousTrips = currentUser.returnPreviousTrips(allTrips)
+    let previousTrips = currentUser.returnPreviousTrips(allTrips);
     
     if (previousTrips.length >= 1) {
-        renderCard('previousTripsCardContainer', previousTrips)
+        renderCard('previousTripsCardContainer', previousTrips);
     };
 };
 
 
 function renderUpcomingTrips() {
-    let upcomingTrips = currentUser.returnUpcomingTrips(allTrips)
+    let upcomingTrips = currentUser.returnUpcomingTrips(allTrips);
     
     if (upcomingTrips.length >= 1) {
-        renderCard('upcomingTripsCardContainer', upcomingTrips)
-    }
-}
+        renderCard('upcomingTripsCardContainer', upcomingTrips);
+    };
+};
 
 function renderPendingTrips() {
-    let pendingTrips = currentUser.returnPendingTrips(allTrips)
+    let pendingTrips = currentUser.returnPendingTrips(allTrips);
     
     if (pendingTrips.length >= 1) {
-        renderCard('pendingTripsCardContainer', pendingTrips)
-    }
+        renderCard('pendingTripsCardContainer', pendingTrips);
+    };
 };
 
 function renderCard(cardCategory, tripData) {
@@ -153,9 +151,9 @@ function renderCard(cardCategory, tripData) {
 };
 
 function renderNewPendingTrip() {
-    let destinationDataSet = retrieveDestinationData([newTrip]); //returns array
+    let destinationDataSet = retrieveDestinationData([newTrip]);
 
-        pendingTripsCardContainer.innerHTML += `
+    pendingTripsCardContainer.innerHTML += `
         <div class="trip-card text" id="upcomingTripCard">
             <div class="trip-card-image-container">
                 <img class="card-image" src="${destinationDataSet[0].image}" alt="${destinationDataSet[0].alt}" />
@@ -166,36 +164,37 @@ function renderNewPendingTrip() {
                 <h3 class="trip-card-status" id="cardTripStatus">${newTrip.status}</h3>
             </div>
         </div> `
-}
+};
 
 function renderYearlySpending() {
-    const totalSpent = currentUser.calculateTotalSpent(allTrips,allDestinations)
+    const totalSpent = currentUser.calculateTotalSpent(allTrips,allDestinations);
 
-    budgetCard.innerText = `$${totalSpent}`
-}
+    budgetCard.innerText = `$${totalSpent}`;
+};
 
 function populateFormDestinations() {
     allDestinations.forEach(destination => {
-        formDestinations.innerHTML +=  `<option>${destination.destination}</option>`
+        formDestinations.innerHTML +=  `<option>${destination.destination}</option>`;
     });
-}
+};
 
 function validateInputEntries() {
     if (formDestinations.value != 'Destination' && 
         (formNumberOfTravelers.value != '' && !isNaN(formNumberOfTravelers.value))
         && formDate.value != '' && 
         (formDuration.value != '' && !isNaN(formDuration.value))) {
-        enableButton()
+        enableButton();
         } else if (isNaN(formNumberOfTravelers.value) || isNaN(formDuration.value)) {
-        inputErrorMessage.classList.remove('hidden')
-        setTimeout(hide, 5000)
-    }
-}
+        inputErrorMessage.classList.remove('hidden');
+
+        setTimeout(hide, 5000);
+    };
+};
 
 function enableButton() {
     submitButton.disabled = false;
     submitButton.classList.remove('disabled');
-}
+};
 
 function submitData() {
     event.preventDefault();
@@ -205,64 +204,66 @@ function submitData() {
         travelers: formNumberOfTravelers.value,
         date: formDate.value,
         duration: formDuration.value
-    }
+    };
 
-    newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData)
-    const total = newTrip.calculateCosts(allDestinations)
+    newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData);
+    const total = newTrip.calculateCosts(allDestinations);
 
-    fetchPost(newTrip)
-    resetForm()
-    showNewTripCost(total)
-}
+    fetchPost(newTrip);
+    resetForm();
+    showNewTripCost(total);
+};
 
 function showConfirmationMessage() {
-    confirmationMessage.classList.remove('hidden')
-    setTimeout(hide, 6000)
-}
+    confirmationMessage.classList.remove('hidden');
+
+    setTimeout(hide, 6000);
+};
 
 function showNewTripCost(total) {
-    newTripCost.innerText = `$${total}`
-}
+    newTripCost.innerText = `$${total}`;
+};
 
 function hide() {
-    confirmationMessage.classList.add('hidden')
-    errorMessage.classList.add('hidden')
-    inputErrorMessage.classList.add('hidden')
-}
+    confirmationMessage.classList.add('hidden');
+    errorMessage.classList.add('hidden');
+    inputErrorMessage.classList.add('hidden');
+};
 
 function resetForm() {
-    newTripForm.reset()
+    newTripForm.reset();
     submitButton.disabled = true;
     submitButton.classList.add('disabled');
-}
+};
 
 function renderNewTripCost() {
-    const cost = newTrip.calculateCosts(allDestinations)
-console.log('cost', cost)
-    newTripCost.innerText = `$${cost}`
-}
+    const cost = newTrip.calculateCosts(allDestinations);
+
+    newTripCost.innerText = `$${cost}`;
+};
 
 //HELPER FUNCTIONS
 function generateRandomUserID() {
     randomUserID = Math.floor(Math.random() * (50 - 1) + 1);
-}
+};
 
 function retrieveDestinationData(trips) {
-    const destinationIDs = returnDestinationID(trips)
-    let destinationDataSets = []
+    const destinationIDs = returnDestinationID(trips);
+    let destinationDataSets = [];
 
     const destinationData =  destinationIDs.forEach(id => {
-        let data = currentUser.retrieveDestinationData(allDestinations, id)
-        destinationDataSets.push(data)
-        })
+        let data = currentUser.retrieveDestinationData(allDestinations, id);
+        
+        destinationDataSets.push(data);
+        });
 
-    return destinationDataSets
-}
+    return destinationDataSets;
+};
         
 function returnDestinationID(trips) {
     return trips.map(trip => {
-        return trip.destinationID
-    })
-}
+        return trip.destinationID;
+    });
+};
 
 export { updateData, hide };
