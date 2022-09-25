@@ -24,6 +24,7 @@ const formDate = document.getElementById('formDate');
 const formDuration = document.getElementById('formDuration');
 const submitButton = document.getElementById('submitButton');
 const errorMessage = document.getElementById('errorMessage');
+const confirmationMessage = document.getElementById('confirmationMessage');
 const newTripCost = document.getElementById('newTripCost');
 
 //GLOBAL VARIABLES
@@ -51,12 +52,13 @@ function loadData() {
 
 function updateData() {
     fetchData('trips')
-        .then((dataSet => {
+        .then((dataSet) => {
             allTrips = dataSet.trips;
             renderUpcomingTrips()
             renderPendingTripCount()
             renderPendingTrips()
-       }));
+            showConfirmationMessage()
+       });
    };
 
 //EVENT LISTENERS
@@ -205,9 +207,23 @@ function submitData() {
     newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData)
 
     fetchPost(newTrip)
-    updateData()
     resetForm()
-    renderNewTripCost(newTrip)
+    const total = newTrip.calculateCosts(allDestinations)
+    showNewTripCost(total)
+}
+
+function showConfirmationMessage() {
+    confirmationMessage.classList.remove('hidden')
+    setTimeout(hide, 5000)
+}
+
+function showNewTripCost(total) {
+    newTripCost.innerText = `$${total}`
+}
+
+function hide() {
+    confirmationMessage.classList.add('hidden')
+    errorMessage.classList.add('hidden')
 }
 
 function resetForm() {
@@ -247,6 +263,9 @@ function returnDestinationID(trips) {
         return trip.destinationID
     })
 }
+
+
+export { updateData, hide };
 
 
 

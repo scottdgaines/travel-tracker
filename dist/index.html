@@ -31,40 +31,40 @@
         <div class="trip-card-display-container" id="pendingTripCardContainer"></div>
       </section>
       <section class="display budget" id="budgetCard">
-        <h2 class="display-header budget-header header" id="displayAreaHeader">Here's what you've spent this year:
-          <br>(Includes a 10% agent's fee)</h2>
+        <h2 class="display-header budget-header header" id="displayAreaHeader">Here's what you've spent in this year running free:
+          <br>(Please keep in mind, this includes our small fee)</h2>
         <div class="trip-card-display-container">
           <div class="budget-card text" id="budgetCardInformation"></div>
         </div>
       </section>
     </div>
     <section class="create-new-trip-display">
-      <h2 class="display-header header">Start a new trip!</h2>
+      <h2 class="display-header header">Start a New Trip!</h2>
       <section class="new-trip-form-container">
         <form class="new-trip-form text" id="newTripForm">
-          <br><label for="destination">Where would you like to go?</label>
+          <br><label for="destination">Where will you go on this trip that you start?</label>
           <select name="form-destinations" id="formDestinations">
-            <option>Choose your destination!</option>
+            <option disabled selected>Destination</option>
           </select> 
-          <br><label for="number-of-travelers">How many people will be going?</label>
-          <input name="number-of-travelers" type="text" id="formNumberOfTravelers" />
-          <br><label for="date">When would you like to arrive?</label>
+          <br><label for="number-of-travelers">How many are going that we'll soon see depart?</label>
+          <input name="number-of-travelers" type="text" placeholder="Number of Travelers" id="formNumberOfTravelers" />
+          <br><label for="date">What date should your next racous 'venture begin?</label>
           <input name="date" type="date" id="formDate" />
-          <br><label for="duration">How long would you like to stay?</label>
-          <input name="duration" type="text" id="formDuration" />
+          <br><label for="duration">And how long of a time till we see you again?</label>
+          <input name="duration" type="text" placeholder="Duration of Trip" id="formDuration" />
           </select>
           <br><button class="text disabled" type="submit" id="submitButton" disabled>Create Your Trip!</button>
         </form>
         <img class="form-image" src="./images/button-image.jpg" alt="A whimsical balloon carries it's passenger off to exotic locations in a strong wind" />
         <div class="new-trip-cost-display">
-          <h2 class="header">Here's what it will cost: <br>
-            <span class="agent-fee">(Includes a 10% agent's fee)</span><br>
-            <span class="new-trip-cost" id="newTripCost"></span>
+          <h2 class="header">To view the whole cost, let's have a look-see: <br>
+            <span class="agent-fee">(And please keep in mind, this includes our small fee)</span><br>
+            <span class="new-trip-cost text" id="newTripCost"></span>
           </h2>
         </div>
       </section>
-      <h4 class="text error-message hidden" id="errorMessage">An error occurred, so there's no time to waste! Please contact your broker, and they'll fix it post-haste!</h4>
-      
+      <h4 class="text message hidden" id="errorMessage">An error occurred, so there's no time to waste! Please contact your broker, and they'll fix it post-haste!</h4>
+      <h4 class="text message hidden" id="confirmationMessage">Your new trip is submitted, time to shout 'Hip Hooray!' Once your agent approves it, you'll be off on your way!</h4>
     </section>
     <script src="bundle.js"></script>
   </body>
