@@ -1,4 +1,4 @@
-import Trip from '../src/Trip.js'
+import Trip from '../src/Trip.js';
 
 class Traveler {
     constructor(travelerData) {
@@ -47,16 +47,17 @@ class Traveler {
     };
 
     returnDestinationData(trips, destinations) {
-        const destinationIDs = this.returnDestinationID(trips)
-        let destinationDataSets = []
+        const destinationIDs = this.returnDestinationID(trips);
+        let destinationDataSets = [];
     
         const destinationData =  destinationIDs.forEach(id => {
-            let data = this.retrieveDestinationData(destinations, id)
-            destinationDataSets.push(data)
-            })
+            let data = this.retrieveDestinationData(destinations, id);
+
+            destinationDataSets.push(data);
+            });
     
-        return destinationDataSets
-    }
+        return destinationDataSets;
+    };
 
     calculateTotalSpent(trips, destinations) {
         const yearsTrips = this.returnTripsPerYear(trips);
@@ -88,9 +89,9 @@ class Traveler {
 
     returnDestinationID(trips) {
         return trips.map(trip => {
-            return trip.destinationID
-        })
-    }
+            return trip.destinationID;
+        });
+    };
 
     updateDestinationID(destinations, newTripData) {
         const destinationID = destinations.find(destination => {
@@ -128,12 +129,10 @@ class Traveler {
 
     reformatDate(newTripData) {
         const reformattedDate = newTripData.date.split('-')
-        .join('/')
+        .join('/');
 
-        console.log('newDate', reformattedDate)
-
-        return reformattedDate
-    }
+        return reformattedDate;
+    };
 };
 
 export default Traveler;

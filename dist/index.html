@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="welcome-message-container">
-      <h1 class="username-header header wiggle">Oh, the places <span class="wiggle" id="userName"></span> will go!</h1>
+      <h1 class="username-header header wiggle">Oh, the places <span id="userName"></span> will go!</h1>
       <h3 class="pending-trip-message text" id="pendingTrips">You have <span id="pendingTripCount"></span> pending <span id="pluralTrip">trips</span></h3>
     </div>
     <div class="display-area">
@@ -31,8 +31,9 @@
         <div class="trip-card-display-container" id="pendingTripsCardContainer"></div>
       </section>
       <section class="display budget" id="budgetCard">
-        <h2 class="display-header budget-header header" id="displayAreaHeader">Here's what you've spent in this year running free:
-          <br>(Please keep in mind, this includes our small fee)</h2>
+        <h2 class="display-header header" id="displayAreaHeader">Spending</h2>
+        <h2 class="budget-text text">Here's what you've spent <br>in this year running free,
+          <br>(Please keep in mind, <br>this includes our small fee):</h2>
         <div class="trip-card-display-container">
           <div class="budget-card text" id="budgetCardInformation"></div>
         </div>
@@ -57,14 +58,14 @@
         </form>
         <img class="form-image" src="./images/button-image.jpg" alt="A whimsical balloon carries it's passenger off to exotic locations in a strong wind" />
         <div class="new-trip-cost-display">
-          <h2 class="header">To view the whole cost, let's have a look-see: <br>
-            <span class="agent-fee">(And please keep in mind, this includes our small fee)</span><br>
+          <h2 class="new-trip-cost-header text">We'll add up the costs of this new trip below<br>
+            <span class="agent-fee">(Including the ten percent fee that you'll owe):</span><br>
             <span class="new-trip-cost text" id="newTripCost"></span>
           </h2>
         </div>
       </section>
       <h4 class="text message hidden" id="inputErrorMessage">The info you entered does not look quite right. Please use only numbers, no letters in sight!</h4>
-      <h4 class="text message hidden" id="errorMessage">An error occurred, so there's no time to waste! Please contact your agent, and they'll fix it post-haste!</h4>
+      <h4 class="text message hidden" id="errorMessage">An error occurred, so there's no time to waste! Please contact your agent, they'll fix it post-haste!</h4>
       <h4 class="text message hidden" id="confirmationMessage">Your trip is submitted, so shout 'Hip Hooray!' Once your agent approves it, you're off on your way!</h4>
     </section>
     <script src="bundle.js"></script>

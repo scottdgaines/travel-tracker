@@ -24,7 +24,7 @@ class Trip {
         const agentFee = totalTrip * .10;
 
         return totalTrip + agentFee;
-    }
+    };
 
     retrieveDestinationData(destinations) {
         return destinations.find(destination => {
