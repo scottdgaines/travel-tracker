@@ -18,10 +18,10 @@ const upcomingTripsCardContainer = document.getElementById('upcomingTripsCardCon
 const pendingTripsCardContainer = document.getElementById('pendingTripsCardContainer');
 const budgetCard = document.getElementById('budgetCardInformation');
 const newTripForm = document.getElementById('newTripForm');
-const formDestinations = document.getElementById('formDestinations');
-const formNumberOfTravelers = document.getElementById('formNumberOfTravelers')
-const formDate = document.getElementById('formDate');
-const formDuration = document.getElementById('formDuration');
+const formDestinations = document.getElementById('tripDestinations');
+const formNumberOfTravelers = document.getElementById('tripTravelers')
+const formDate = document.getElementById('tripDate');
+const formDuration = document.getElementById('tripDuration');
 const submitButton = document.getElementById('submitButton');
 const inputErrorMessage = document.getElementById('inputErrorMessage');
 const errorMessage = document.getElementById('errorMessage');
@@ -135,16 +135,16 @@ function renderCard(cardCategory, tripData) {
         cardContainers.forEach(cardContainer => {
             if (cardContainer.id === cardCategory) {
                 cardContainer.innerHTML += `
-                    <div class="trip-card text" id="${cardCategory}Card">
+                    <article tabindex="0" class="trip-card text" id="${cardCategory}${index}">
                         <div class="trip-card-image-container">
                             <img class="card-image" src="${destination.image}" alt="${destination.alt}" />
                         </div>
                         <div class="trip-card-info-container">
-                            <h2 class="trip-card-header" id="cardDestination">${destination.destination}</h2>
-                            <h3 class="trip-card-dates" id="cardDates">${tripData[index].date}</h3>
-                            <h3 class="trip-card-status" id="cardTripStatus">${tripData[index].status}</h3>
+                            <p class="trip-card-header" id="cardDestination">${destination.destination}</p>
+                            <p class="trip-card-dates" id="cardDates">${tripData[index].date}</p>
+                            <p class="trip-card-status" id="cardTripStatus">${tripData[index].status}</p>
                         </div>
-                    </div> `
+                    </article> `
             };
         });
     });
