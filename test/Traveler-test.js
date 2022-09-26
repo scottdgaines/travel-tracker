@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import Traveler from '../src/Traveler.js'
-import Trip from '../src/Trip.js'
 
 describe('Traveler', () => {
     let traveler1;
@@ -230,7 +229,7 @@ describe('Traveler', () => {
 
     it('Should be able to retrieve a destination\'s data based on destination id', () => {
         expect(traveler1.retrieveDestinationData(destinations, 10)).to.equal(destinations[0]);
-    })
+    });
 
     it('Should be able to return a date in the format YYYY/MM/DD', () => {
         let reformattedDate = traveler1.reformatDate(newTripInputValues1)
