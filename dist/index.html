@@ -16,7 +16,7 @@
     <section id="loginPage">
       <div class="login-container-and-image">
         <div class="login-container">
-          <h1 class="header login-header">Login</h1>
+          <h1 class="display-header login-header">Login</h1>
           <form class="login-form" id="loginForm">
             <label class="login-label text" for="username">Username</label><br>
             <input class="login-input" name="username" type="text" id="username" /><br>
@@ -24,30 +24,32 @@
             <input class="login-input" name="password" type="password" id="password" /><br>
             <button class="login-button text disabled" type="submit" id="loginButton" disabled>Login</button>
           </form>
+          <p class="login-error text hidden" id="password-error">Your password was wrong. You could not log in.<br> Please check on the spelling, and submit it again!</p>
+          <p class="login-error text hidden" id="username-error">We don't think we know of the name that you typed <br> Please look it all over to check that it's right!</p>
         </div>
         <img class="login-image" src="./images/man.jpg" alt="A man in a yellow beanie walks eagerly towards a new, unknown destination" />
       </div>
     </section>
     <section class="traveler-dashboard hidden" id="travelerDashboard">
       <div class="welcome-message-container">
-        <h1 class="username-header header wiggle">Oh, the places <span id="userName"></span> will go!</h1>
+        <h1 class="username-header">Oh, the places <span id="userName"></span> will go!</h1>
         <p class="pending-trip-message text" id="pendingTrips">You have <span id="pendingTripCount"></span> pending <span id="pluralTrip">trips</span></p>
       </div>
       <div class="display-area">
         <section class="display previous-trips" id="previousTrips">
-          <h2 class="display-header header" id="displayAreaHeader">Previous Trips</h2>
+          <h2 class="display-header" id="displayAreaHeader">Previous Trips</h2>
           <div class="trip-card-display-container" id="previousTripsCardContainer"></div>
         </section>
         <section class="display upcoming-trips" id="upcomingTrips">
-          <h3 class="display-header header" id="displayAreaHeader">Upcoming Trips</h3>
+          <h3 class="display-header" id="displayAreaHeader">Upcoming Trips</h3>
           <div class="trip-card-display-container" id="upcomingTripsCardContainer"></div>
         </section>
         <section class="display pending-trips" id="pendingTrips">
-          <h4 class="display-header header" id="displayAreaHeader">Pending Trips</h4>
+          <h4 class="display-header" id="displayAreaHeader">Pending Trips</h4>
           <div class="trip-card-display-container" id="pendingTripsCardContainer"></div>
         </section>
         <section class="display budget" id="budgetCard">
-          <h5 class="display-header header" id="displayAreaHeader">Spending</h5>
+          <h5 class="display-header" id="displayAreaHeader">Spending</h5>
           <p class="budget-text text">Here's what you've spent <br>in this year running free,
             <br>(Please keep in mind, <br>this includes our small fee):</p>
           <div class="trip-card-display-container">
@@ -56,7 +58,7 @@
         </section>
       </div>
       <section class="create-new-trip-display">
-        <h6 class="display-header header">Start a New Trip!</h6>
+        <h6 class="display-header">Start a New Trip!</h6>
         <section class="new-trip-form-container">
           <form class="new-trip-form text" id="newTripForm">
             <br><label for="tripDestinations">Where will you go on this trip that you start?</label>
