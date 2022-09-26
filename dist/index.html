@@ -13,6 +13,21 @@
     <title>Travel Tracker</title>
   </head>
   <body>
+    <section id="loginPage">
+      <div class="login-container-and-image">
+        <div class="login-container">
+          <h1 class="header login-header">Login</h1>
+          <form class="login-form" id="loginForm">
+            <label class="login-label text" for="username">Username</label><br>
+            <input class="login-input" name="username" type="text" id="username" /><br>
+            <label class="login-label text" for="password" id="password">Password</label><br>
+            <input class="login-input" name="password" type="password" id="password" /><br>
+            <button class="login-button text disabled" type="submit" id="loginButton" disabled>Login</button>
+          </form>
+        </div>
+        <img class="login-image" src="./images/man.jpg" alt="A man in a yellow beanie walks eagerly towards a new, unknown destination" />
+      </div>
+    </section>
     <section class="traveler-dashboard hidden" id="travelerDashboard">
       <div class="welcome-message-container">
         <h1 class="username-header header wiggle">Oh, the places <span id="userName"></span> will go!</h1>
