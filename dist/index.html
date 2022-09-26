@@ -15,7 +15,7 @@
   <body>
     <div class="welcome-message-container">
       <h1 class="username-header header wiggle">Oh, the places <span id="userName"></span> will go!</h1>
-      <h3 class="pending-trip-message text" id="pendingTrips">You have <span id="pendingTripCount"></span> pending <span id="pluralTrip">trips</span></h3>
+      <p class="pending-trip-message text" id="pendingTrips">You have <span id="pendingTripCount"></span> pending <span id="pluralTrip">trips</span></p>
     </div>
     <div class="display-area">
       <section class="display previous-trips" id="previousTrips">
@@ -23,50 +23,50 @@
         <div class="trip-card-display-container" id="previousTripsCardContainer"></div>
       </section>
       <section class="display upcoming-trips" id="upcomingTrips">
-        <h2 class="display-header header" id="displayAreaHeader">Upcoming Trips</h2>
+        <h3 class="display-header header" id="displayAreaHeader">Upcoming Trips</h3>
         <div class="trip-card-display-container" id="upcomingTripsCardContainer"></div>
       </section>
       <section class="display pending-trips" id="pendingTrips">
-        <h2 class="display-header header" id="displayAreaHeader">Pending Trips</h2>
+        <h4 class="display-header header" id="displayAreaHeader">Pending Trips</h4>
         <div class="trip-card-display-container" id="pendingTripsCardContainer"></div>
       </section>
       <section class="display budget" id="budgetCard">
-        <h2 class="display-header header" id="displayAreaHeader">Spending</h2>
-        <h2 class="budget-text text">Here's what you've spent <br>in this year running free,
-          <br>(Please keep in mind, <br>this includes our small fee):</h2>
+        <h5 class="display-header header" id="displayAreaHeader">Spending</h5>
+        <p class="budget-text text">Here's what you've spent <br>in this year running free,
+          <br>(Please keep in mind, <br>this includes our small fee):</p>
         <div class="trip-card-display-container">
           <div class="budget-card text" id="budgetCardInformation"></div>
         </div>
       </section>
     </div>
     <section class="create-new-trip-display">
-      <h2 class="display-header header">Start a New Trip!</h2>
+      <h6 class="display-header header">Start a New Trip!</h6>
       <section class="new-trip-form-container">
         <form class="new-trip-form text" id="newTripForm">
-          <br><label for="destination">Where will you go on this trip that you start?</label>
-          <select name="form-destinations" id="formDestinations">
+          <br><label for="tripDestinations">Where will you go on this trip that you start?</label>
+          <select name="form-destinations" id="tripDestinations">
             <option disabled selected>Destination</option>
           </select> 
-          <br><label for="number-of-travelers">How many are going that we'll soon see depart?</label>
-          <input name="number-of-travelers" type="text" placeholder="Number of Travelers" id="formNumberOfTravelers" />
-          <br><label for="date">What date should your next racous 'venture begin?</label>
-          <input name="date" type="date" id="formDate" />
-          <br><label for="duration">And how long of a time till we see you again?</label>
-          <input name="duration" type="text" placeholder="Duration of Trip" id="formDuration" />
+          <br><label for="tripTravelers">How many are going that we'll soon see depart?</label>
+          <input name="number-of-travelers" type="text" placeholder="Number of Travelers" id="tripTravelers" />
+          <br><label for="tripDate">What date should your next racous 'venture begin?</label>
+          <input name="date" type="date" id="tripDate" />
+          <br><label for="tripDuration">And how long of a time till we see you again?</label>
+          <input name="duration" type="text" placeholder="Duration of Trip" id="tripDuration" />
           </select>
           <br><button class="text disabled" type="submit" id="submitButton" disabled>Create Your Trip!</button>
         </form>
         <img class="form-image" src="./images/button-image.jpg" alt="A whimsical balloon carries it's passenger off to exotic locations in a strong wind" />
         <div class="new-trip-cost-display">
-          <h2 class="new-trip-cost-header text">We'll add up the costs of this new trip below<br>
+          <p class="new-trip-cost-header text">We'll add up the costs of this new trip below<br>
             <span class="agent-fee">(Including the ten percent fee that you'll owe):</span><br>
             <span class="new-trip-cost text" id="newTripCost"></span>
-          </h2>
+          </p>
         </div>
       </section>
-      <h4 class="text message hidden" id="inputErrorMessage">The info you entered does not look quite right. Please use only numbers, no letters in sight!</h4>
-      <h4 class="text message hidden" id="errorMessage">An error occurred, so there's no time to waste! Please contact your agent, they'll fix it post-haste!</h4>
-      <h4 class="text message hidden" id="confirmationMessage">Your trip is submitted, so shout 'Hip Hooray!' Once your agent approves it, you're off on your way!</h4>
+      <p class="text message hidden" id="inputErrorMessage">The info you entered does not look quite right. Please use only numbers, no letters in sight!</p>
+      <p class="text message hidden" id="errorMessage">An error occurred, so there's no time to waste! Please contact your agent, they'll fix it post-haste!</p>
+      <p class="text message hidden" id="confirmationMessage">Your trip is submitted, so shout 'Hip Hooray!' Once your agent approves it, you're off on your way!</p>
     </section>
     <script src="bundle.js"></script>
   </body>
