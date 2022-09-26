@@ -133,9 +133,8 @@ body {
 .traveler-dashboard {
   background-image: url('../images/main-background-2.jpg');
   background-position: left;
+  background-size: cover;
   height: 100vh;
-  margin: 0px;
-  width: 100vw;
 }
 
 .welcome-message-container {
