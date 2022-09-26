@@ -179,12 +179,12 @@ function populateFormDestinations() {
 };
 
 function validateInputEntries() {
-    if (formDestinations.value != 'Destination' && 
-        (!formNumberOfTravelers.value && !isNaN(formNumberOfTravelers.value)) && 
-        !formDate.value && 
-        (!formDuration.value && !isNaN(formDuration.value))) {
+    if (formDestinations.value != 'Destination' && (formNumberOfTravelers.value && 
+        !isNaN(formNumberOfTravelers.value) && formNumberOfTravelers.value != ' ') &&
+        formDate.value && (formDuration.value && !isNaN(formDuration.value) && formDuration.value != ' ')) {
         enableButton();
-        } else if (isNaN(formNumberOfTravelers.value) || isNaN(formDuration.value)) {
+        } else if ((isNaN(formNumberOfTravelers.value) || formNumberOfTravelers.value === ' ')
+         || (isNaN(formDuration.value) || formDuration.value === ' ')) {
         inputErrorMessage.classList.remove('hidden');
 
         setTimeout(hide, 5000);
@@ -253,7 +253,7 @@ function retrieveDestinationData(trips) {
 
     const destinationData =  destinationIDs.forEach(id => {
         let data = currentUser.retrieveDestinationData(allDestinations, id);
-
+        
         destinationDataSets.push(data);
         });
 
