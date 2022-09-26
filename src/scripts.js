@@ -135,7 +135,7 @@ function renderCard(cardCategory, tripData) {
         cardContainers.forEach(cardContainer => {
             if (cardContainer.id === cardCategory) {
                 cardContainer.innerHTML += `
-                    <article tabindex="0" class="trip-card text" id="${cardCategory}Card">
+                    <article tabindex="0" class="trip-card text" id="${cardCategory}${index}">
                         <div class="trip-card-image-container">
                             <img class="card-image" src="${destination.image}" alt="${destination.alt}" />
                         </div>
