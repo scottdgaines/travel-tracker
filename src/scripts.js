@@ -4,12 +4,18 @@ import { fetchData, fetchPost } from './apiCalls.js';
 import Traveler from './Traveler.js';
 
 //IMAGES
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/man.jpg';
 import './images/main-background-2.jpg';
 import './images/button-image.jpg';
 
 //QUERY SELECTORS
+const login = document.getElementById('loginPage');
+const usernameInput = document.getElementById('usernameInput');
+const passwordInput = document.getElementById('passwordInput');
+const loginButton = document.getElementById('loginButton');
+const usernameError = document.getElementById('usernameError');
+const passwordError = document.getElementById('passwordError');
+const travelerDashboard = document.getElementById('travelerDashboard');
 const userName = document.getElementById('userName');
 const pendingTripCount = document.getElementById('pendingTripCount');
 const pluralTrip = document.getElementById('pluralTrip');
@@ -29,19 +35,38 @@ const confirmationMessage = document.getElementById('confirmationMessage');
 const newTripCost = document.getElementById('newTripCost');
 
 //GLOBAL VARIABLES
+let userID;
 let userData;
+let allUsers;
 let currentUser;
 let allTrips;
 let allDestinations;
-let randomUserID;
 let newTrip;
+const loginInputs = [usernameInput, passwordInput];
 const formInputs = [formDestinations, formNumberOfTravelers, formDate, formDuration];
 const cardContainers = [previousTripsCardContainer, upcomingTripsCardContainer, pendingTripsCardContainer];
 
+//EVENT LISTENERS
+window.addEventListener('load', loadAllUsers);
+loginInputs.forEach(input => {
+    input.addEventListener('input', function() { validateLoginFields(); })
+    });
+loginButton.addEventListener('click', validateLoginEntries);
+formInputs.forEach(input => {
+    input.addEventListener('input', function() { validateNewTripEntries(); })
+    });
+submitButton.addEventListener('click', submitData);
 
 //FETCH REQUESTS
+function loadAllUsers() {
+    fetchData('travelers') 
+        .then((data => {
+            allUsers = data;
+    }));
+};
+
 function loadData() {
- Promise.all([fetchData(`travelers/${randomUserID}`), fetchData('trips'), fetchData('destinations')])
+ Promise.all([fetchData(`travelers/${userID}`), fetchData('trips'), fetchData('destinations')])
     .then((dataSet => {
         userData = dataSet[0];
         allTrips = dataSet[1].trips;
@@ -57,18 +82,9 @@ function updateData() {
             renderUpcomingTrips();
             renderPendingTripCount();
             renderNewPendingTrip();
-            showConfirmationMessage();
+            showMessage(confirmationMessage);
        });
    };
-
-//EVENT LISTENERS
-window.addEventListener('load', generateRandomUserID);
-window.addEventListener('load', loadData);
-formInputs.forEach(input => {
-    input.addEventListener('input', function() { validateInputEntries() })
-    });
-submitButton.addEventListener('click', submitData);
-
 
 //EVENT HANDLERS
 function populatePage() {
@@ -82,47 +98,76 @@ function populatePage() {
     populateFormDestinations();
 };
 
-function instantiateNewUser() {
-    currentUser = new Traveler(userData);
+function submitData() {
+    event.preventDefault();
+
+    const newTripData = {
+        destinationName: formDestinations.value,
+        travelers: formNumberOfTravelers.value,
+        date: formDate.value,
+        duration: formDuration.value
+    };
+
+    newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData);
+    const total = newTrip.calculateCosts(allDestinations);
+
+    fetchPost(newTrip);
+    resetForm();
+    showNewTripCost(total);
 };
 
-function renderWelcomeMessage() {
-    userName.innerText = currentUser.name;
-};
+function validateLoginEntries() {
+    event.preventDefault();
 
-function renderPendingTripCount() {
-    let pendingTrips = currentUser.returnPendingTrips(allTrips);
+    userID = parseInt(usernameInput.value.slice(8));
 
-    pendingTripCount.innerText = pendingTrips.length;
-
-    if (pendingTrips.length === 1) {
-        pluralTrip.innerText = 'trip';
+    if (usernameInput.value.length < 8 || !usernameInput.value.includes('traveler') || 
+    checkUserID(userID) === null) {
+        showMessage(usernameError)
+    } else if (passwordInput.value !== 'travel') {
+        showMessage(passwordError);
+    } else {
+        login.classList.add('hidden');
+        travelerDashboard.classList.remove('hidden');
+        loadData();
     };
 };
 
-function renderPreviousTrips() {
-    let previousTrips = currentUser.returnPreviousTrips(allTrips);
-    
-    if (previousTrips.length >= 1) {
-        renderCard('previousTripsCardContainer', previousTrips);
+function validateLoginFields() {
+    if (usernameInput.value && passwordInput.value) {
+        enableButton(loginButton);
+    }; 
+};
+
+function validateNewTripEntries() {
+    if (formDestinations.value != 'Destination' && (formNumberOfTravelers.value && 
+    !isNaN(formNumberOfTravelers.value) && formNumberOfTravelers.value != ' ') &&
+    formDate.value && (formDuration.value && !isNaN(formDuration.value) && formDuration.value != ' ')) {
+        enableButton(submitButton);
+        } else if ((isNaN(formNumberOfTravelers.value) || formNumberOfTravelers.value === ' ') 
+        || (isNaN(formDuration.value) || formDuration.value === ' ')) {
+        inputErrorMessage.classList.remove('hidden');
+
+        setTimeout(hide, 5000);
     };
 };
 
-
-function renderUpcomingTrips() {
-    let upcomingTrips = currentUser.returnUpcomingTrips(allTrips);
-    
-    if (upcomingTrips.length >= 1) {
-        renderCard('upcomingTripsCardContainer', upcomingTrips);
-    };
+//DOM MANIPULATION
+function enableButton(button) {
+    button.disabled = false;
+    button.classList.remove('disabled');
 };
 
-function renderPendingTrips() {
-    let pendingTrips = currentUser.returnPendingTrips(allTrips);
-    
-    if (pendingTrips.length >= 1) {
-        renderCard('pendingTripsCardContainer', pendingTrips);
-    };
+function hide() {
+    confirmationMessage.classList.add('hidden');
+    errorMessage.classList.add('hidden');
+    inputErrorMessage.classList.add('hidden');
+};
+
+function populateFormDestinations() {
+    allDestinations.forEach(destination => {
+        formDestinations.innerHTML +=  `<option>${destination.destination}</option>`;
+    });
 };
 
 function renderCard(cardCategory, tripData) {
@@ -166,68 +211,48 @@ function renderNewPendingTrip() {
         </div> `
 };
 
+function renderPendingTrips() {
+    let pendingTrips = currentUser.returnPendingTrips(allTrips);
+    
+    if (pendingTrips.length >= 1) {
+        renderCard('pendingTripsCardContainer', pendingTrips);
+    };
+};
+
+function renderPendingTripCount() {
+    let pendingTrips = currentUser.returnPendingTrips(allTrips);
+
+    pendingTripCount.innerText = pendingTrips.length;
+
+    if (pendingTrips.length === 1) {
+        pluralTrip.innerText = 'trip';
+    };
+};
+
+function renderPreviousTrips() {
+    let previousTrips = currentUser.returnPreviousTrips(allTrips);
+    
+    if (previousTrips.length >= 1) {
+        renderCard('previousTripsCardContainer', previousTrips);
+    };
+};
+
+function renderUpcomingTrips() {
+    let upcomingTrips = currentUser.returnUpcomingTrips(allTrips);
+    
+    if (upcomingTrips.length >= 1) {
+        renderCard('upcomingTripsCardContainer', upcomingTrips);
+    };
+};
+
 function renderYearlySpending() {
     const totalSpent = currentUser.calculateTotalSpent(allTrips,allDestinations);
 
     budgetCard.innerText = `$${totalSpent}`;
 };
 
-function populateFormDestinations() {
-    allDestinations.forEach(destination => {
-        formDestinations.innerHTML +=  `<option>${destination.destination}</option>`;
-    });
-};
-
-function validateInputEntries() {
-    if (formDestinations.value != 'Destination' && (formNumberOfTravelers.value && 
-        !isNaN(formNumberOfTravelers.value) && formNumberOfTravelers.value != ' ') &&
-        formDate.value && (formDuration.value && !isNaN(formDuration.value) && formDuration.value != ' ')) {
-        enableButton();
-        } else if ((isNaN(formNumberOfTravelers.value) || formNumberOfTravelers.value === ' ')
-         || (isNaN(formDuration.value) || formDuration.value === ' ')) {
-        inputErrorMessage.classList.remove('hidden');
-
-        setTimeout(hide, 5000);
-    };
-};
-
-function enableButton() {
-    submitButton.disabled = false;
-    submitButton.classList.remove('disabled');
-};
-
-function submitData() {
-    event.preventDefault();
-
-    const newTripData = {
-        destinationName: formDestinations.value,
-        travelers: formNumberOfTravelers.value,
-        date: formDate.value,
-        duration: formDuration.value
-    };
-
-    newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData);
-    const total = newTrip.calculateCosts(allDestinations);
-
-    fetchPost(newTrip);
-    resetForm();
-    showNewTripCost(total);
-};
-
-function showConfirmationMessage() {
-    confirmationMessage.classList.remove('hidden');
-
-    setTimeout(hide, 6000);
-};
-
-function showNewTripCost(total) {
-    newTripCost.innerText = `$${total}`;
-};
-
-function hide() {
-    confirmationMessage.classList.add('hidden');
-    errorMessage.classList.add('hidden');
-    inputErrorMessage.classList.add('hidden');
+function renderWelcomeMessage() {
+    userName.innerText = currentUser.name;
 };
 
 function resetForm() {
@@ -236,15 +261,30 @@ function resetForm() {
     submitButton.classList.add('disabled');
 };
 
-function renderNewTripCost() {
-    const cost = newTrip.calculateCosts(allDestinations);
+function showMessage(message) {
+    message.classList.remove('hidden');
 
-    newTripCost.innerText = `$${cost}`;
+    setTimeout(hide, 6000);
+};
+
+function showNewTripCost(total) {
+    newTripCost.innerText = `$${total}`;
 };
 
 //HELPER FUNCTIONS
-function generateRandomUserID() {
-    randomUserID = Math.floor(Math.random() * (50 - 1) + 1);
+function checkUserID(id) {
+    const validUser = allUsers.travelers.find(user => {
+        return user.id === id});
+
+    if (validUser) {
+        return true;
+    } else {
+        return null;
+    };
+};
+
+function instantiateNewUser() {
+    currentUser = new Traveler(userData);
 };
 
 function retrieveDestinationData(trips) {

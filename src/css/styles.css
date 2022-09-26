@@ -18,14 +18,11 @@
 }
 
 .display-header {
-  margin: 0 auto;
+  font-family: 'Irish Grover', cursive;
   font-size: 30px;
   text-align: center;
+  margin: 0 auto;
   margin-top: 10px;
-}
-
-.header {
-  font-family: 'Irish Grover', cursive;
 }
 
 .trip-card {
@@ -76,11 +73,65 @@
 }
 
 /* Specific Properties, Arranged According to Appearance */
-body {
+.login-container-and-image {
+  margin-top: 30vh;
+}
+
+.login-container {
+  background-color: #3CC8BC;
+  border: 2px solid black;
+  border-radius: 25px;
+  box-shadow: 2px 2px 2px grey; 
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin: 0 auto;
+  width: 350px;
+}
+
+.login-header {
+  font-size: 45px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.login-form {
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.login-label {
+  font-size: 15px;
+}
+
+.login-input {
+  margin-top: 2px;
+  width: 200px;
+}
+
+.login-button {
+  background-color: #BBADD9;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100px;
+}
+
+.login-error {
+  font-size: 14px;
+  margin: 10px;
+}
+
+.login-image {
+  height: 210px;
+}
+
+.traveler-dashboard {
   background-image: url('../images/main-background-2.jpg');
   background-position: left;
   height: 100vh;
   margin: 0;
+  padding: 0px;
   width: 100vw;
 }
 
