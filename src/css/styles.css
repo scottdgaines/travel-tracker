@@ -73,6 +73,10 @@
 }
 
 /* Specific Properties, Arranged According to Appearance */
+body {
+  margin: 0px;
+}
+
 .login-container-and-image {
   margin-top: 30vh;
 }
@@ -130,8 +134,7 @@
   background-image: url('../images/main-background-2.jpg');
   background-position: left;
   height: 100vh;
-  margin: 0;
-  padding: 0px;
+  margin: 0px;
   width: 100vw;
 }
 

@@ -11,6 +11,7 @@ describe('Trip', () => {
     let newTrip;
     let trip1;
     let destinations;
+    let reformattedDate;
 
     beforeEach(() => {
         traveler1 = new Traveler({
@@ -22,7 +23,7 @@ describe('Trip', () => {
         newTripInputValues = {
             destinationName: 'Lima, Peru',
             travelers: 1,
-            date: '2022/09/16',
+            date: '2022-09-16',
             duration: 8
         };
 
@@ -30,7 +31,7 @@ describe('Trip', () => {
 
         tripID = trips.length + 1
 
-        newTrip = new Trip(tripID, 5, newTripInputValues, 10);
+        newTrip = new Trip(tripID, 5, newTripInputValues, 10, reformattedDate);
 
         trip1 = {
             id: 4,
@@ -86,6 +87,9 @@ describe('Trip', () => {
     });
 
     it('Should have an arrival date', () => {
+        reformattedDate = traveler1.reformatDate(newTripInputValues)
+        newTrip = new Trip(tripID, 5, newTripInputValues, 10, reformattedDate);
+        
         expect(newTrip.date).to.equal('2022/09/16');
     });
 
