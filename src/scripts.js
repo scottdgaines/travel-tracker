@@ -108,6 +108,7 @@ function submitData() {
         duration: formDuration.value
     };
 
+    console.log('date', formDate.value)
     newTrip = currentUser.createNewTrip(allTrips, allDestinations, newTripData);
     const total = newTrip.calculateCosts(allDestinations);
 
