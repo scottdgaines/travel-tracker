@@ -18,21 +18,21 @@
         <div class="login-container">
           <h1 class="display-header login-header">Login</h1>
           <form class="login-form" id="loginForm">
-            <label class="login-label text" for="username">Username</label><br>
-            <input class="login-input" name="username" type="text" id="username" /><br>
+            <label class="login-label text" for="usernameInput">Username</label><br>
+            <input class="login-input" name="username" type="text" id="usernameInput" /><br>
             <label class="login-label text" for="password" id="password">Password</label><br>
-            <input class="login-input" name="password" type="password" id="password" /><br>
+            <input class="login-input" name="passwordInput" type="password" id="passwordInput" /><br>
             <button class="login-button text disabled" type="submit" id="loginButton" disabled>Login</button>
           </form>
-          <p class="login-error text hidden" id="password-error">Your password was wrong. You could not log in.<br> Please check on the spelling, and submit it again!</p>
-          <p class="login-error text hidden" id="username-error">We don't think we know of the name that you typed <br> Please look it all over to check that it's right!</p>
+          <p class="login-error text hidden" id="passwordError">Your password was wrong. You could not log in.<br> Please check on the spelling, and submit it again!</p>
+          <p class="login-error text hidden" id="usernameError">We don't think we know of the name that you typed <br> Please look it all over to check that it's right!</p>
         </div>
         <img class="login-image" src="./images/man.jpg" alt="A man in a yellow beanie walks eagerly towards a new, unknown destination" />
       </div>
     </section>
     <section class="traveler-dashboard hidden" id="travelerDashboard">
       <div class="welcome-message-container">
-        <h1 class="username-header">Oh, the places <span id="userName"></span> will go!</h1>
+        <h1 class="username-header display-header">Oh, the places <span id="userName"></span> will go!</h1>
         <p class="pending-trip-message text" id="pendingTrips">You have <span id="pendingTripCount"></span> pending <span id="pluralTrip">trips</span></p>
       </div>
       <div class="display-area">
