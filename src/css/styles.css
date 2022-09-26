@@ -76,7 +76,7 @@
 }
 
 /* Specific Properties, Arranged According to Appearance */
-body {
+.traveler-dashboard {
   background-image: url('../images/main-background-2.jpg');
   background-position: left;
   height: 100vh;
