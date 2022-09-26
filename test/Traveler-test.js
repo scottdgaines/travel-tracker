@@ -23,7 +23,7 @@ describe('Traveler', () => {
         newTripInputValues1 = {
             destinationName: 'Lima, Peru',
             travelers: 1,
-            date: '2022/09/16',
+            date: '2022-09-16',
             duration: 8
         };
 
@@ -221,5 +221,19 @@ describe('Traveler', () => {
 
     it('Should be able to calculate the total amount a user has spent on all trips', () => {
         expect(traveler1.calculateTotalSpent(trips, destinations)).to.equal(3674);
+    });
+    
+    it('Should be able to generate a unique trip ID', () => {
+        let tripID = traveler1.generateTripID(trips);
+        expect(tripID).to.equal(6);
+    });
+
+    it('Should be able to retrieve a destination\'s data based on destination id', () => {
+        expect(traveler1.retrieveDestinationData(destinations, 10)).to.equal(destinations[0]);
+    })
+
+    it('Should be able to return a date in the format YYYY/MM/DD', () => {
+        let reformattedDate = traveler1.reformatDate(newTripInputValues1)
+        expect(reformattedDate).to.equal('2022/09/16');
     });
 });
