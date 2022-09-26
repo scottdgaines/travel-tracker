@@ -180,9 +180,9 @@ function populateFormDestinations() {
 
 function validateInputEntries() {
     if (formDestinations.value != 'Destination' && 
-        (formNumberOfTravelers.value != '' && !isNaN(formNumberOfTravelers.value))
-        && formDate.value != '' && 
-        (formDuration.value != '' && !isNaN(formDuration.value))) {
+        (!formNumberOfTravelers.value && !isNaN(formNumberOfTravelers.value)) && 
+        !formDate.value && 
+        (!formDuration.value && !isNaN(formDuration.value))) {
         enableButton();
         } else if (isNaN(formNumberOfTravelers.value) || isNaN(formDuration.value)) {
         inputErrorMessage.classList.remove('hidden');
@@ -253,7 +253,7 @@ function retrieveDestinationData(trips) {
 
     const destinationData =  destinationIDs.forEach(id => {
         let data = currentUser.retrieveDestinationData(allDestinations, id);
-        
+
         destinationDataSets.push(data);
         });
 
