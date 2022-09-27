@@ -55,24 +55,24 @@ If you'd like to pull down the code to your local machine:
 
 ## Dev Notes
 ### Wins
-- Fully functional and interactive login and dashboard
 - Organized process
+- Fully functional and interactive login and dashboard
 - High level of accessibility
 - Dynamic, SRP functions
 - Form validation and user-error prevention
 - Robust testing suite
-- Whimscical comp elements
+- Whimsical comp design
 
 ### Challenges
 - Debugging POST request errors
 - Debugging card rendering process for new trip submissions
 
 ## Dev Contact
-Scott Gaines<br>
-scottdgaines@gmail.com<br>
-[LinkedIn](https://www.linkedin.com/in/scottdgaines-fe/)<br>
-[GitHub](https://github.com/scottdgaines)<br>
-[Medium](https://medium.com/@scottdgaines)
+### Scott Gaines<br>
+- scottdgaines@gmail.com<br>
+- [LinkedIn](https://www.linkedin.com/in/scottdgaines-fe/)<br>
+- [GitHub](https://github.com/scottdgaines)<br>
+- [Medium](https://medium.com/@scottdgaines)
 
 
 ## Credit
