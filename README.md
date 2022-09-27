@@ -50,7 +50,7 @@ If you'd like to pull down the code to your local machine:
 - Javascript
 - Mocha
 - Chai
-- Webpac
+- Webpack
 - API Fetch Requests
 
 ## Dev Notes
@@ -59,7 +59,7 @@ If you'd like to pull down the code to your local machine:
 - Fully functional and interactive login and dashboard
 - High level of accessibility
 - Dynamic, SRP functions
-- Form validation and user-error prevention
+- User-error prevention and error handling
 - Robust testing suite
 - Whimsical comp design
 
