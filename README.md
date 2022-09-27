@@ -30,7 +30,7 @@ Goals for this project included:
 You will first be greeted by a login page. To access the traveler's dashboard, enter the following credentials:
 
 Username: traveler[Number between 1 and 50]<br>
-Passowrd: travel
+Password: travel
 
 Note: Both are case-sensitive, and changing the number in the username will access a different user's profile.
 
