@@ -7,7 +7,7 @@ Adventure awaits, but the lists keep on growing,<br>
 So we invented this app to help track where you're going!<br>
 There are spots that will show all the places you've been,<br>
 all the places to come, and how much you've spent.<br>
-And when you're ready to start on a brand new adventure,<br>
+Once you're ready to start on a brand new adventure,<br>
 There's a form to submit and a cost that will render.<br>
 So don't hesitate, there's a whole world to know!<br>
 (Just please don't forget to keep track 'fore you go).
