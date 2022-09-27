@@ -19,10 +19,10 @@ So don't hesitate, there's a whole world to know!<br>
 I am currently studying Front End Developement at the [Turing School of Software and Design](https://frontend.turing.edu/). This Travel Tracker app is the final solo project for Mod 2, meaning I have been a software developer for just under three months!
 
 Goals for this project included:
-- Use OOP to drive the design of the application and the code,
-- Work with an API to send and receive data,
-- Solidify the code review process,
-- Create a robust test suite that thoroughly tests all functionality of a client-side application.
+- Using OOP to drive the design of the application and the code,
+- Working with an API to send and receive data,
+- Solidifying the code review process,
+- Creating a robust test suite that thoroughly tests all functionality of a client-side application.
 
 [Project Description](https://frontend.turing.edu/projects/travel-tracker.html)
 
