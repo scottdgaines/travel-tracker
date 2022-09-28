@@ -2,7 +2,7 @@
   "name": "webpack-starter-kit",
   "version": "2.0.0",
   "description": "Project starter kit using webpack, mocha, chai, and SCSS/SASS enabled",
-  "main": "scripts.js",
+  "main": "src/scripts.js",
   "homepage": "http://scottdgaines.github.io/travel-tracker",
   "repository": {
     "type": "git",
