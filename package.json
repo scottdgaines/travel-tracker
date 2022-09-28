@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Project starter kit using webpack, mocha, chai, and SCSS/SASS enabled",
   "main": "src/index.js",
-  "homepage": "http://USERNAME.github.io/REPONAME",
+  "homepage": "http://scottdgaines.github.io/travel-tracker",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/scottdgaines/travel-tracker.git"
