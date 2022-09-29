@@ -39,9 +39,9 @@ If you'd like to pull down the code to your local machine:
 
 1. Make a copy of this repository by pressing the 'Fork' button in the upper right corner and following the prompts
 2. Clone your copy of the repository down to your local machine:
-- On your forked repository's page, click the green 'Code' button, select SSH, and copy the URL
-- Run `git clone <copied URL>` in your command line
-- `cd` into the root directory
+  - On your forked repository's page, click the green 'Code' button, select SSH, and copy the URL
+  - Run `git clone <copied URL>` in your command line
+  - `cd` into the root directory
 6. Run `npm install` in your command line to install the necessary dependencies
 
 ## Technologies Used
