@@ -1,6 +1,6 @@
 # [Travel Tracker](https://scottdgaines.github.io/travel-tracker/)
 
-[Project Board](https://trello.com/b/s2y8nm41/travel-tracker) | [Project Wireframe](https://excalidraw.com/)
+[Project Board](https://trello.com/b/Q7fPZz5t/travel-tracker) | [Project Wireframe](https://excalidraw.com/)
 
 ## Overview
 Adventure awaits, but the lists keep on growing,<br>
