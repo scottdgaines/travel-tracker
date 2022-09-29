@@ -16,7 +16,7 @@ So don't hesitate, there's a whole world to know!<br>
 ![2022-09-27 09 23 32](https://user-images.githubusercontent.com/103966650/192568438-40bf78dd-1d29-4392-abbe-0373510b16f8.gif)
 
 ## Project Context
-I am currently studying Front End Developement at the [Turing School of Software and Design](https://frontend.turing.edu/). This Travel Tracker app is the final solo project for Mod 2, meaning I have been a software developer for just under three months!
+I am currently studying Front End Developement at the [Turing School of Software and Design](https://frontend.turing.edu/). This Travel Tracker app is the final solo project for Mod 2, assigned and completed approximately three months into my coding career.
 
 Goals for this project included:
 - Using OOP to drive the design of the application and the code
