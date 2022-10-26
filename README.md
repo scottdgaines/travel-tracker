@@ -1,4 +1,4 @@
-# [Travel Tracker](https://scottdgaines.github.io/travel-tracker/)
+# [Travel Tracker](https://travel-tracker-seven.vercel.app/)
 
 [Project Board](https://trello.com/b/Q7fPZz5t/travel-tracker) | [Project Wireframe](https://excalidraw.com/)
 
