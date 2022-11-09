@@ -1,6 +1,6 @@
-# [Travel Tracker](https://travel-tracker-seven.vercel.app/)
+# Travel Tracker
 
-[Project Board](https://trello.com/b/Q7fPZz5t/travel-tracker) | [Project Wireframe](https://excalidraw.com/)
+[Deployed Link](https://travel-tracker-seven.vercel.app/) | [Project Board](https://trello.com/b/Q7fPZz5t/travel-tracker) | [Project Wireframe](https://excalidraw.com/)
 
 ## Overview
 Adventure awaits, but the lists keep on growing,<br>
